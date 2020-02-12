@@ -1,0 +1,509 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Git and GitHub | Lab of Environmental Informatics</title>
+<meta name="description" content="To start with a clarification: Git is the version control system you will use in this course (and which is used by many other developers all around the world). With Git you will manage something called repository which is the place where you manage your software project (i.e. a folder on your hard disk per project). GitHub is an online software development platform which provides online hosted versions of your local Git repositories and much more collaborative functionality.Some GitHub advertisementAfter this kind of advertisement, let’s listen to a more sober introduction to distributed version systems.More information on Git and GitHubTo learn more about Git and GitHub, some starting points are  GitHub Guides provided by GitHub which also includes a very comprehensive introduction to Git.  GitHub youtube channel  GitHub learning labIf you are more traditional, you could also start with the original Git getting started guide at git-scm.com or with this paper published in PLOS Computational Biology.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Lab of Environmental Informatics">
+<meta property="og:title" content="Git and GitHub">
+<meta property="og:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit01/unit01-09_git_github.html">
+
+
+  <meta property="og:description" content="To start with a clarification: Git is the version control system you will use in this course (and which is used by many other developers all around the world). With Git you will manage something called repository which is the place where you manage your software project (i.e. a folder on your hard disk per project). GitHub is an online software development platform which provides online hosted versions of your local Git repositories and much more collaborative functionality.Some GitHub advertisementAfter this kind of advertisement, let’s listen to a more sober introduction to distributed version systems.More information on Git and GitHubTo learn more about Git and GitHub, some starting points are  GitHub Guides provided by GitHub which also includes a very comprehensive introduction to Git.  GitHub youtube channel  GitHub learning labIf you are more traditional, you could also start with the original Git getting started guide at git-scm.com or with this paper published in PLOS Computational Biology.">
+
+
+
+
+
+  <meta name="twitter:site" content="@EnvIn_UMR">
+  <meta name="twitter:title" content="Git and GitHub">
+  <meta name="twitter:description" content="To start with a clarification: Git is the version control system you will use in this course (and which is used by many other developers all around the world). With Git you will manage something called repository which is the place where you manage your software project (i.e. a folder on your hard disk per project). GitHub is an online software development platform which provides online hosted versions of your local Git repositories and much more collaborative functionality.Some GitHub advertisementAfter this kind of advertisement, let’s listen to a more sober introduction to distributed version systems.More information on Git and GitHubTo learn more about Git and GitHub, some starting points are  GitHub Guides provided by GitHub which also includes a very comprehensive introduction to Git.  GitHub youtube channel  GitHub learning labIf you are more traditional, you could also start with the original Git getting started guide at git-scm.com or with this paper published in PLOS Computational Biology.">
+  <meta name="twitter:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit01/unit01-09_git_github.html">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-02-12T16:28:34+01:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/moer-bsc-project-seminar-SDM/unit01/unit01-09_git_github.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/moer-bsc-project-seminar-SDM/feed.xml" type="application/atom+xml" rel="alternate" title="Lab of Environmental Informatics Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/moer-bsc-project-seminar-SDM/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+    	<a class="site-title" href="http://localhost:4000/moer-bsc-project-seminar-SDM/" style="padding:0px"><img src="http://localhost:4000/moer-bsc-project-seminar-SDM/assets/images/logo_umr.png" style="padding-right:15px">Lab of Environmental Informatics</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//units.html" >Course units</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//about.html" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//index.html" >Course home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://oer.uni-marburg.de/goto.php?target=crs_326&client_id=mriliasmooc" >OER home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//sitemap.html" >Sitemap</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+
+  
+    
+      
+      
+      
+    
+    
+	  
+        <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+    
+      
+      
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit01/unit01-01_the_very_basics.html" class="">01 The very basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-01_the_very_basics.html" class="">The very basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-02_r_rstudio.html" class="">R and RStudio</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-03_structures_vectors.html" class="">Example: Vector Basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-04_structures_lists.html" class="">Example: List Basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-05_structures_data_frames.html" class="">Example: Data Frame Basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-06_coercion.html" class="">Example: Coercion</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-07_substring.html" class="">Example: Extracting Substrings</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-08_Rmd_html.html" class="">Example: R Markdown with html output</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-09_git_github.html" class="active">Git and GitHub</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-10_notes_on_assignments.html" class="">Assignments and Working Environment</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit01/unit01-11_assignment.html" class="">Marked Assignment: Hello R, Hello GitHub</a></li>
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit02/unit02-01_more_basics.html" class="">02 More basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit03/unit03-01_spatial_data.html" class="">03 Working with spatial data</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+  </ul>
+</nav>
+	  
+    
+  
+  </div>
+  
+
+
+
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Git and GitHub">
+    <meta itemprop="description" content="To start with a clarification: Git is the version control system you will use in this course (and which is used by many other developers all around the world). With Git you will manage something called repository which is the place where you manage your software project (i.e. a folder on your hard disk per project). GitHub is an online software development platform which provides online hosted versions of your local Git repositories and much more collaborative functionality.Some GitHub advertisementAfter this kind of advertisement, let’s listen to a more sober introduction to distributed version systems.More information on Git and GitHubTo learn more about Git and GitHub, some starting points are  GitHub Guides provided by GitHub which also includes a very comprehensive introduction to Git.  GitHub youtube channel  GitHub learning labIf you are more traditional, you could also start with the original Git getting started guide at git-scm.com or with this paper published in PLOS Computational Biology.">
+    <meta itemprop="datePublished" content="February 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Git and GitHub
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>To start with a clarification: Git is the version control system you will use in this course (and which is used by many other developers all around the world). 
+With Git you will manage something called <em>repository</em> which is the place where you manage your software project (i.e. a folder on your hard disk per project). GitHub is an online software development platform which provides online hosted versions of your local Git repositories and much more collaborative functionality.</p>
+
+<h2 id="some-github-advertisement">Some GitHub advertisement</h2>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/noZnOSpcjYY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p>After this kind of advertisement, let’s listen to a more sober introduction to distributed version systems.</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FyfwLX4HAxM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<h2 id="more-information-on-git-and-github">More information on Git and GitHub</h2>
+<p>To learn more about Git and GitHub, some starting points are</p>
+<ul>
+  <li><a href="https://guides.github.com/" target="_blank">GitHub Guides provided by GitHub</a> which also includes a very comprehensive introduction to <a href="https://guides.github.com/introduction/git-handbook/" target="_blank">Git</a>.</li>
+  <li><a href="https://www.youtube.com/user/GitHubGuides/" target="_blank">GitHub youtube channel</a></li>
+  <li><a href="https://lab.github.com/" target="_blank">GitHub learning lab</a></li>
+</ul>
+
+<p>If you are more traditional, you could also start with the original <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" target="_blank">Git getting started guide at git-scm.com</a>
+ or with this <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668" target="_blank">paper published in PLOS Computational Biology</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-12T16:28:34+01:00">February 12, 2020</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit01/unit01-08_Rmd_html.html" class="pagination--pager" title="Example: R Markdown with html output
+">Previous</a>
+    
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit01/unit01-10_notes_on_assignments.html" class="pagination--pager" title="Assignments and Working Environment
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+      <li><a href="https://twitter.com/EnvIn_UMR"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="https://github.com/GeoMOER"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="http://localhost:4000/moer-bsc-project-seminar-SDM/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> &copy; 2020 Lab of Environmental Informatics
+. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>, <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> &amp; <a href="https://www.uni-marburg.de/fb19" rel="nofollow">Geography@Marburg University</a>.</div>
+
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/moer-bsc-project-seminar-SDM/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

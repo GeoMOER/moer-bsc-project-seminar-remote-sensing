@@ -1,0 +1,669 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Example: Visual Data Exploration | Lab of Environmental Informatics</title>
+<meta name="description" content="Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the percentage fraction of settlement, recreational, agricultural, and forest areas for each rural district in Germany. The data has been provided through the Regional Database Germany.Within this example, we will focus on basic R graphics. Of course, all of the example could also be realized using more advanced plotting libraries like lattice or ggplot.Pre-processing and reading of the data is not shown but the first five lines of the final data set are printed below. Just for simplicity, a variable numc is defined which will be used to subset the data frame to the relevant columns.numc &lt;- c(&quot;Settlement&quot;, &quot;Recreation&quot;, &quot;Agriculture&quot;, &quot;Forest&quot;)head(lu)##   Year   ID                                          Place Settlement## 1 1996   DG                                    Deutschland       11.8## 2 1996    1                             Schleswig-Holstein       10.8## 3 1996 1001                    Flensburg, Kreisfreie Stadt       47.3## 4 1996 1002       Kiel, Landeshauptstadt, Kreisfreie Stadt       52.1## 5 1996 1003           L\201beck, Hansestadt, Kreisfreie Stadt       30.2## 6 1996 1004                   Neum\201nster, Kreisfreie Stadt       46.4##   Recreation Agriculture Forest## 1        0.7        54.1   29.4## 2        0.7        73.0    9.3## 3        5.1        25.1    6.0## 4        1.3        34.7    3.3## 5        2.9        39.7   12.9## 6        4.9        46.9    3.4BoxplotA boxplot is probably the most fundamental way to perform a visual data exploration. It generally shows the median along with the 25% and 75% quartiles (box and line within) as well as the value range which is within a range of 1.5 times the inter-quartile range (i.e. the size of the box which is also called spread). Values outside the latter range are indicated as outliers. All those settings can be changed.Producing a boxplot is staright forward (the x-axis lables are just the column names):boxplot(lu[, numc])As can be seen, outliers in terms of the box-plot logic are clearly identifieable although this logic does not actually proof if an observation is an outlier. Hence, one has to cross-check the data and if there is no actual sign for an outliers, then keep the data as is! However, since “outliers”” might have a strong influence on further analyisis, one could check some kind of transformation to reduce the value range. The following example shows a root and logarithmic transformation. In order to distinguish the plots, we add a title using the main parameter:par_org &lt;- par()par(mfrow = c(2,2))boxplot(lu[, numc], main = &quot;Original&quot;)boxplot(lu[, numc]**0.5, main = &quot;Square root&quot;)boxplot(lu[, numc]**(1/3), main = &quot;Cube root&quot;)boxplot(log(lu[, numc]), main = &quot;Log&quot;)par(par_org)HistogramsHistograms are usefull for getting an idea of the distribution of the dataset. Visualization is straight forward:hist(lu$Settlement)QQ plotsWhile historgramms just give an idea, QQ plots give a more reliable estimate if a data set follows a specific distribution.If you are just interested in a normal distribution, you can use qqnorm for this. In order to ease the interpretation, we will also add a theoretical line which runs through the 25% and 75% quartile. If your data does not deviate considerably from this line, chances are high that it actually follows the theoretical distributino used to compute the plot (in the following case, this is a normal distribution):qqnorm(lu$Agriculture)qqline(lu$Agriculture, col = &quot;red&quot;, lwd = 2)abline(h=quantile(lu$Agriculture, probs = c(0.25,0.75), na.rm = TRUE), col=&quot;blue&quot;, lty = 3)abline(v=qnorm(c(0.25,0.75)), col=&quot;blue&quot;, lty = 3)Again, using different transformations might be of advantage (or not in this case!, taken from Zuur et al. 2007):par(mfrow = c(2,2))for(p in c(1, 0.5, 0.25, 0)){  if(p != 0){    qqnorm((lu$Agriculture**p-1)/p, main = paste0(&quot;Normal Q-Q Plot, y**p-1/p for &quot;, p))    qqline((lu$Agriculture**p-1)/p, col = &quot;red&quot;)    } else {    qqnorm(log(lu$Agriculture), main = &quot;Normal Q-Q Plot, log(y)&quot;)    qqline(log(lu$Agriculture), col = &quot;red&quot;)  }}par(par_org)If you want to use any other distribution, use qqplot instead and provide the distribution to the function. For the line, compute the 25% and 75% quantile and add it with abline. Since the latter function requires an intercept and slope for drawing the line, you have to compute it by yourself or just compute a simple linear model for that using lm:par(mfrow = c(2,2))dist &lt;- rnorm(ppoints(length(lu$Settlement)))qqplot(dist, lu$Settlement, main = &quot;Normal&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rchisq(ppoints(length(lu$Settlement)), df = 2)qqplot(dist, lu$Settlement, main = &quot;Chi squared&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rgamma(length(lu$Settlement), shape = 0.6)qqplot(dist, lu$Settlement, main = &quot;Gamma&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rweibull(length(lu$Settlement), shape = 1)qqplot(dist, lu$Settlement, main = &quot;Weibull&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)par(par_org)ScatterplotScatterplot, i.e. the mother of all plots, focuses on the relationship between variables. The x-axis should be used for the (more) independent variable, the y-axis for the (more) dependent variable.Again, creating such a plot is very simple:plot(lu$Settlement, lu$Recreation)The axis lables are just the column names of the data frame but for this stage of data analysis, this is more than fine. If you finally decide which graphic should be included in a final presentation (e.g. publication), then the right time for nice lables and other stuff has come. But priot to that, pimping is just a waste of time.plot(lu$Settlement, lu$Recreation)If you are interested in the relation between all (or many) variables in your dataset, just supply the entire data frame or a column subset of it to plot:plot(lu[, numc])CoplotAs a final example, a coplot might be of some value. It is as scatterplot but the visualized relationship is splitted in accordance to value ranges of (an)other variable(s). The call to coplot is again straight forward. Left of the | are the two variables which will be included in the actual scatterplots, to the right is the variable which is used for the splits. If more than one variable should be used, the variables are combined with a + (not included here because of figure margin restrictions):coplot(Forest ~ Agriculture | Settlement, data = lu)">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Lab of Environmental Informatics">
+<meta property="og:title" content="Example: Visual Data Exploration">
+<meta property="og:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-11_exploration.html">
+
+
+  <meta property="og:description" content="Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the percentage fraction of settlement, recreational, agricultural, and forest areas for each rural district in Germany. The data has been provided through the Regional Database Germany.Within this example, we will focus on basic R graphics. Of course, all of the example could also be realized using more advanced plotting libraries like lattice or ggplot.Pre-processing and reading of the data is not shown but the first five lines of the final data set are printed below. Just for simplicity, a variable numc is defined which will be used to subset the data frame to the relevant columns.numc &lt;- c(&quot;Settlement&quot;, &quot;Recreation&quot;, &quot;Agriculture&quot;, &quot;Forest&quot;)head(lu)##   Year   ID                                          Place Settlement## 1 1996   DG                                    Deutschland       11.8## 2 1996    1                             Schleswig-Holstein       10.8## 3 1996 1001                    Flensburg, Kreisfreie Stadt       47.3## 4 1996 1002       Kiel, Landeshauptstadt, Kreisfreie Stadt       52.1## 5 1996 1003           L\201beck, Hansestadt, Kreisfreie Stadt       30.2## 6 1996 1004                   Neum\201nster, Kreisfreie Stadt       46.4##   Recreation Agriculture Forest## 1        0.7        54.1   29.4## 2        0.7        73.0    9.3## 3        5.1        25.1    6.0## 4        1.3        34.7    3.3## 5        2.9        39.7   12.9## 6        4.9        46.9    3.4BoxplotA boxplot is probably the most fundamental way to perform a visual data exploration. It generally shows the median along with the 25% and 75% quartiles (box and line within) as well as the value range which is within a range of 1.5 times the inter-quartile range (i.e. the size of the box which is also called spread). Values outside the latter range are indicated as outliers. All those settings can be changed.Producing a boxplot is staright forward (the x-axis lables are just the column names):boxplot(lu[, numc])As can be seen, outliers in terms of the box-plot logic are clearly identifieable although this logic does not actually proof if an observation is an outlier. Hence, one has to cross-check the data and if there is no actual sign for an outliers, then keep the data as is! However, since “outliers”” might have a strong influence on further analyisis, one could check some kind of transformation to reduce the value range. The following example shows a root and logarithmic transformation. In order to distinguish the plots, we add a title using the main parameter:par_org &lt;- par()par(mfrow = c(2,2))boxplot(lu[, numc], main = &quot;Original&quot;)boxplot(lu[, numc]**0.5, main = &quot;Square root&quot;)boxplot(lu[, numc]**(1/3), main = &quot;Cube root&quot;)boxplot(log(lu[, numc]), main = &quot;Log&quot;)par(par_org)HistogramsHistograms are usefull for getting an idea of the distribution of the dataset. Visualization is straight forward:hist(lu$Settlement)QQ plotsWhile historgramms just give an idea, QQ plots give a more reliable estimate if a data set follows a specific distribution.If you are just interested in a normal distribution, you can use qqnorm for this. In order to ease the interpretation, we will also add a theoretical line which runs through the 25% and 75% quartile. If your data does not deviate considerably from this line, chances are high that it actually follows the theoretical distributino used to compute the plot (in the following case, this is a normal distribution):qqnorm(lu$Agriculture)qqline(lu$Agriculture, col = &quot;red&quot;, lwd = 2)abline(h=quantile(lu$Agriculture, probs = c(0.25,0.75), na.rm = TRUE), col=&quot;blue&quot;, lty = 3)abline(v=qnorm(c(0.25,0.75)), col=&quot;blue&quot;, lty = 3)Again, using different transformations might be of advantage (or not in this case!, taken from Zuur et al. 2007):par(mfrow = c(2,2))for(p in c(1, 0.5, 0.25, 0)){  if(p != 0){    qqnorm((lu$Agriculture**p-1)/p, main = paste0(&quot;Normal Q-Q Plot, y**p-1/p for &quot;, p))    qqline((lu$Agriculture**p-1)/p, col = &quot;red&quot;)    } else {    qqnorm(log(lu$Agriculture), main = &quot;Normal Q-Q Plot, log(y)&quot;)    qqline(log(lu$Agriculture), col = &quot;red&quot;)  }}par(par_org)If you want to use any other distribution, use qqplot instead and provide the distribution to the function. For the line, compute the 25% and 75% quantile and add it with abline. Since the latter function requires an intercept and slope for drawing the line, you have to compute it by yourself or just compute a simple linear model for that using lm:par(mfrow = c(2,2))dist &lt;- rnorm(ppoints(length(lu$Settlement)))qqplot(dist, lu$Settlement, main = &quot;Normal&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rchisq(ppoints(length(lu$Settlement)), df = 2)qqplot(dist, lu$Settlement, main = &quot;Chi squared&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rgamma(length(lu$Settlement), shape = 0.6)qqplot(dist, lu$Settlement, main = &quot;Gamma&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rweibull(length(lu$Settlement), shape = 1)qqplot(dist, lu$Settlement, main = &quot;Weibull&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)par(par_org)ScatterplotScatterplot, i.e. the mother of all plots, focuses on the relationship between variables. The x-axis should be used for the (more) independent variable, the y-axis for the (more) dependent variable.Again, creating such a plot is very simple:plot(lu$Settlement, lu$Recreation)The axis lables are just the column names of the data frame but for this stage of data analysis, this is more than fine. If you finally decide which graphic should be included in a final presentation (e.g. publication), then the right time for nice lables and other stuff has come. But priot to that, pimping is just a waste of time.plot(lu$Settlement, lu$Recreation)If you are interested in the relation between all (or many) variables in your dataset, just supply the entire data frame or a column subset of it to plot:plot(lu[, numc])CoplotAs a final example, a coplot might be of some value. It is as scatterplot but the visualized relationship is splitted in accordance to value ranges of (an)other variable(s). The call to coplot is again straight forward. Left of the | are the two variables which will be included in the actual scatterplots, to the right is the variable which is used for the splits. If more than one variable should be used, the variables are combined with a + (not included here because of figure margin restrictions):coplot(Forest ~ Agriculture | Settlement, data = lu)">
+
+
+
+
+
+  <meta name="twitter:site" content="@EnvIn_UMR">
+  <meta name="twitter:title" content="Example: Visual Data Exploration">
+  <meta name="twitter:description" content="Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the percentage fraction of settlement, recreational, agricultural, and forest areas for each rural district in Germany. The data has been provided through the Regional Database Germany.Within this example, we will focus on basic R graphics. Of course, all of the example could also be realized using more advanced plotting libraries like lattice or ggplot.Pre-processing and reading of the data is not shown but the first five lines of the final data set are printed below. Just for simplicity, a variable numc is defined which will be used to subset the data frame to the relevant columns.numc &lt;- c(&quot;Settlement&quot;, &quot;Recreation&quot;, &quot;Agriculture&quot;, &quot;Forest&quot;)head(lu)##   Year   ID                                          Place Settlement## 1 1996   DG                                    Deutschland       11.8## 2 1996    1                             Schleswig-Holstein       10.8## 3 1996 1001                    Flensburg, Kreisfreie Stadt       47.3## 4 1996 1002       Kiel, Landeshauptstadt, Kreisfreie Stadt       52.1## 5 1996 1003           L\201beck, Hansestadt, Kreisfreie Stadt       30.2## 6 1996 1004                   Neum\201nster, Kreisfreie Stadt       46.4##   Recreation Agriculture Forest## 1        0.7        54.1   29.4## 2        0.7        73.0    9.3## 3        5.1        25.1    6.0## 4        1.3        34.7    3.3## 5        2.9        39.7   12.9## 6        4.9        46.9    3.4BoxplotA boxplot is probably the most fundamental way to perform a visual data exploration. It generally shows the median along with the 25% and 75% quartiles (box and line within) as well as the value range which is within a range of 1.5 times the inter-quartile range (i.e. the size of the box which is also called spread). Values outside the latter range are indicated as outliers. All those settings can be changed.Producing a boxplot is staright forward (the x-axis lables are just the column names):boxplot(lu[, numc])As can be seen, outliers in terms of the box-plot logic are clearly identifieable although this logic does not actually proof if an observation is an outlier. Hence, one has to cross-check the data and if there is no actual sign for an outliers, then keep the data as is! However, since “outliers”” might have a strong influence on further analyisis, one could check some kind of transformation to reduce the value range. The following example shows a root and logarithmic transformation. In order to distinguish the plots, we add a title using the main parameter:par_org &lt;- par()par(mfrow = c(2,2))boxplot(lu[, numc], main = &quot;Original&quot;)boxplot(lu[, numc]**0.5, main = &quot;Square root&quot;)boxplot(lu[, numc]**(1/3), main = &quot;Cube root&quot;)boxplot(log(lu[, numc]), main = &quot;Log&quot;)par(par_org)HistogramsHistograms are usefull for getting an idea of the distribution of the dataset. Visualization is straight forward:hist(lu$Settlement)QQ plotsWhile historgramms just give an idea, QQ plots give a more reliable estimate if a data set follows a specific distribution.If you are just interested in a normal distribution, you can use qqnorm for this. In order to ease the interpretation, we will also add a theoretical line which runs through the 25% and 75% quartile. If your data does not deviate considerably from this line, chances are high that it actually follows the theoretical distributino used to compute the plot (in the following case, this is a normal distribution):qqnorm(lu$Agriculture)qqline(lu$Agriculture, col = &quot;red&quot;, lwd = 2)abline(h=quantile(lu$Agriculture, probs = c(0.25,0.75), na.rm = TRUE), col=&quot;blue&quot;, lty = 3)abline(v=qnorm(c(0.25,0.75)), col=&quot;blue&quot;, lty = 3)Again, using different transformations might be of advantage (or not in this case!, taken from Zuur et al. 2007):par(mfrow = c(2,2))for(p in c(1, 0.5, 0.25, 0)){  if(p != 0){    qqnorm((lu$Agriculture**p-1)/p, main = paste0(&quot;Normal Q-Q Plot, y**p-1/p for &quot;, p))    qqline((lu$Agriculture**p-1)/p, col = &quot;red&quot;)    } else {    qqnorm(log(lu$Agriculture), main = &quot;Normal Q-Q Plot, log(y)&quot;)    qqline(log(lu$Agriculture), col = &quot;red&quot;)  }}par(par_org)If you want to use any other distribution, use qqplot instead and provide the distribution to the function. For the line, compute the 25% and 75% quantile and add it with abline. Since the latter function requires an intercept and slope for drawing the line, you have to compute it by yourself or just compute a simple linear model for that using lm:par(mfrow = c(2,2))dist &lt;- rnorm(ppoints(length(lu$Settlement)))qqplot(dist, lu$Settlement, main = &quot;Normal&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rchisq(ppoints(length(lu$Settlement)), df = 2)qqplot(dist, lu$Settlement, main = &quot;Chi squared&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rgamma(length(lu$Settlement), shape = 0.6)qqplot(dist, lu$Settlement, main = &quot;Gamma&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rweibull(length(lu$Settlement), shape = 1)qqplot(dist, lu$Settlement, main = &quot;Weibull&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)par(par_org)ScatterplotScatterplot, i.e. the mother of all plots, focuses on the relationship between variables. The x-axis should be used for the (more) independent variable, the y-axis for the (more) dependent variable.Again, creating such a plot is very simple:plot(lu$Settlement, lu$Recreation)The axis lables are just the column names of the data frame but for this stage of data analysis, this is more than fine. If you finally decide which graphic should be included in a final presentation (e.g. publication), then the right time for nice lables and other stuff has come. But priot to that, pimping is just a waste of time.plot(lu$Settlement, lu$Recreation)If you are interested in the relation between all (or many) variables in your dataset, just supply the entire data frame or a column subset of it to plot:plot(lu[, numc])CoplotAs a final example, a coplot might be of some value. It is as scatterplot but the visualized relationship is splitted in accordance to value ranges of (an)other variable(s). The call to coplot is again straight forward. Left of the | are the two variables which will be included in the actual scatterplots, to the right is the variable which is used for the splits. If more than one variable should be used, the variables are combined with a + (not included here because of figure margin restrictions):coplot(Forest ~ Agriculture | Settlement, data = lu)">
+  <meta name="twitter:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-11_exploration.html">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-02-12T16:28:34+01:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-11_exploration.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/moer-bsc-project-seminar-SDM/feed.xml" type="application/atom+xml" rel="alternate" title="Lab of Environmental Informatics Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/moer-bsc-project-seminar-SDM/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+    	<a class="site-title" href="http://localhost:4000/moer-bsc-project-seminar-SDM/" style="padding:0px"><img src="http://localhost:4000/moer-bsc-project-seminar-SDM/assets/images/logo_umr.png" style="padding-right:15px">Lab of Environmental Informatics</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//units.html" >Course units</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//about.html" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//index.html" >Course home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://oer.uni-marburg.de/goto.php?target=crs_326&client_id=mriliasmooc" >OER home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//sitemap.html" >Sitemap</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+
+  
+    
+      
+      
+      
+    
+    
+	  
+        <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+    
+      
+      
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit01/unit01-01_the_very_basics.html" class="">01 The very basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit02/unit02-01_more_basics.html" class="">02 More basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-01_more_basics.html" class="">More basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-02_operators.html" class="">Operators</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-03_decisions_loops.html" class="">Decisions and Loops</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-04_if-then-else.html" class="">Example: If-then-else</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-05_for-loops.html" class="">Example: For-loops</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-05b_loop_exercise.html" class="">Exercise: Loop and Conquer</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-06_code_style.html" class="">Code Styling</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-07_data_io.html" class="">Tabulated Data I/O</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-08_visualization.html" class="">Visualization</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-09_csv_io.html" class="">Example: CSV I/O</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-10_aggregating.html" class="">Example: Aggregation Statistics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-11_exploration.html" class="active">Example: Visual Data Exploration</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-12_clean_your_data.html" class="">Clean Your Data</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-13_na.html" class="">Example: Missing Values</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-14_datetime.html" class="">Example: Date/Time</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-15_sorting.html" class="">Example: Sorting</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-16_cleaning.html" class="">Example: Cleaning Columns</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-17_merging.html" class="">Example: Merging</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-18_get_prepared.html" class="">Get prepared for SDM</a></li>
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit03/unit03-01_spatial_data.html" class="">03 Working with spatial data</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+  </ul>
+</nav>
+	  
+    
+  
+  </div>
+  
+
+
+
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Example: Visual Data Exploration">
+    <meta itemprop="description" content="Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the percentage fraction of settlement, recreational, agricultural, and forest areas for each rural district in Germany. The data has been provided through the Regional Database Germany.Within this example, we will focus on basic R graphics. Of course, all of the example could also be realized using more advanced plotting libraries like lattice or ggplot.Pre-processing and reading of the data is not shown but the first five lines of the final data set are printed below. Just for simplicity, a variable numc is defined which will be used to subset the data frame to the relevant columns.numc &lt;- c(&quot;Settlement&quot;, &quot;Recreation&quot;, &quot;Agriculture&quot;, &quot;Forest&quot;)head(lu)##   Year   ID                                          Place Settlement## 1 1996   DG                                    Deutschland       11.8## 2 1996    1                             Schleswig-Holstein       10.8## 3 1996 1001                    Flensburg, Kreisfreie Stadt       47.3## 4 1996 1002       Kiel, Landeshauptstadt, Kreisfreie Stadt       52.1## 5 1996 1003           L\201beck, Hansestadt, Kreisfreie Stadt       30.2## 6 1996 1004                   Neum\201nster, Kreisfreie Stadt       46.4##   Recreation Agriculture Forest## 1        0.7        54.1   29.4## 2        0.7        73.0    9.3## 3        5.1        25.1    6.0## 4        1.3        34.7    3.3## 5        2.9        39.7   12.9## 6        4.9        46.9    3.4BoxplotA boxplot is probably the most fundamental way to perform a visual data exploration. It generally shows the median along with the 25% and 75% quartiles (box and line within) as well as the value range which is within a range of 1.5 times the inter-quartile range (i.e. the size of the box which is also called spread). Values outside the latter range are indicated as outliers. All those settings can be changed.Producing a boxplot is staright forward (the x-axis lables are just the column names):boxplot(lu[, numc])As can be seen, outliers in terms of the box-plot logic are clearly identifieable although this logic does not actually proof if an observation is an outlier. Hence, one has to cross-check the data and if there is no actual sign for an outliers, then keep the data as is! However, since “outliers”” might have a strong influence on further analyisis, one could check some kind of transformation to reduce the value range. The following example shows a root and logarithmic transformation. In order to distinguish the plots, we add a title using the main parameter:par_org &lt;- par()par(mfrow = c(2,2))boxplot(lu[, numc], main = &quot;Original&quot;)boxplot(lu[, numc]**0.5, main = &quot;Square root&quot;)boxplot(lu[, numc]**(1/3), main = &quot;Cube root&quot;)boxplot(log(lu[, numc]), main = &quot;Log&quot;)par(par_org)HistogramsHistograms are usefull for getting an idea of the distribution of the dataset. Visualization is straight forward:hist(lu$Settlement)QQ plotsWhile historgramms just give an idea, QQ plots give a more reliable estimate if a data set follows a specific distribution.If you are just interested in a normal distribution, you can use qqnorm for this. In order to ease the interpretation, we will also add a theoretical line which runs through the 25% and 75% quartile. If your data does not deviate considerably from this line, chances are high that it actually follows the theoretical distributino used to compute the plot (in the following case, this is a normal distribution):qqnorm(lu$Agriculture)qqline(lu$Agriculture, col = &quot;red&quot;, lwd = 2)abline(h=quantile(lu$Agriculture, probs = c(0.25,0.75), na.rm = TRUE), col=&quot;blue&quot;, lty = 3)abline(v=qnorm(c(0.25,0.75)), col=&quot;blue&quot;, lty = 3)Again, using different transformations might be of advantage (or not in this case!, taken from Zuur et al. 2007):par(mfrow = c(2,2))for(p in c(1, 0.5, 0.25, 0)){  if(p != 0){    qqnorm((lu$Agriculture**p-1)/p, main = paste0(&quot;Normal Q-Q Plot, y**p-1/p for &quot;, p))    qqline((lu$Agriculture**p-1)/p, col = &quot;red&quot;)    } else {    qqnorm(log(lu$Agriculture), main = &quot;Normal Q-Q Plot, log(y)&quot;)    qqline(log(lu$Agriculture), col = &quot;red&quot;)  }}par(par_org)If you want to use any other distribution, use qqplot instead and provide the distribution to the function. For the line, compute the 25% and 75% quantile and add it with abline. Since the latter function requires an intercept and slope for drawing the line, you have to compute it by yourself or just compute a simple linear model for that using lm:par(mfrow = c(2,2))dist &lt;- rnorm(ppoints(length(lu$Settlement)))qqplot(dist, lu$Settlement, main = &quot;Normal&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rchisq(ppoints(length(lu$Settlement)), df = 2)qqplot(dist, lu$Settlement, main = &quot;Chi squared&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rgamma(length(lu$Settlement), shape = 0.6)qqplot(dist, lu$Settlement, main = &quot;Gamma&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)dist &lt;- rweibull(length(lu$Settlement), shape = 1)qqplot(dist, lu$Settlement, main = &quot;Weibull&quot;)abline(lm(quantile(lu$Settlement, na.rm = TRUE, probs = c(0.25, 0.75)) ~      quantile(dist, probs = c(0.25, 0.75))), col = &quot;red&quot;, lwd = 2)par(par_org)ScatterplotScatterplot, i.e. the mother of all plots, focuses on the relationship between variables. The x-axis should be used for the (more) independent variable, the y-axis for the (more) dependent variable.Again, creating such a plot is very simple:plot(lu$Settlement, lu$Recreation)The axis lables are just the column names of the data frame but for this stage of data analysis, this is more than fine. If you finally decide which graphic should be included in a final presentation (e.g. publication), then the right time for nice lables and other stuff has come. But priot to that, pimping is just a waste of time.plot(lu$Settlement, lu$Recreation)If you are interested in the relation between all (or many) variables in your dataset, just supply the entire data frame or a column subset of it to plot:plot(lu[, numc])CoplotAs a final example, a coplot might be of some value. It is as scatterplot but the visualized relationship is splitted in accordance to value ranges of (an)other variable(s). The call to coplot is again straight forward. Left of the | are the two variables which will be included in the actual scatterplots, to the right is the variable which is used for the splits. If more than one variable should be used, the variables are combined with a + (not included here because of figure margin restrictions):coplot(Forest ~ Agriculture | Settlement, data = lu)">
+    <meta itemprop="datePublished" content="February 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Example: Visual Data Exploration
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> In this example</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#boxplot">Boxplot</a></li>
+  <li><a href="#histograms">Histograms</a></li>
+  <li><a href="#qq-plots">QQ plots</a></li>
+  <li><a href="#scatterplot">Scatterplot</a></li>
+  <li><a href="#coplot">Coplot</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the percentage fraction of settlement, recreational, agricultural, and forest areas for each rural district in Germany. The data has been provided through the <a href="https://www.regionalstatistik.de/genesis/online/">Regional Database Germany</a>.</p>
+
+<p>Within this example, we will focus on basic R graphics. Of course, all of the example could also be realized using more advanced plotting libraries like <code class="highlighter-rouge">lattice</code> or <code class="highlighter-rouge">ggplot</code>.</p>
+
+<p>Pre-processing and reading of the data is not shown but the first five lines of the final data set are printed below. Just for simplicity, a variable <code class="highlighter-rouge">numc</code> is defined which will be used to subset the data frame to the relevant columns.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Settlement"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Recreation"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Agriculture"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Forest"</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">lu</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##   Year   ID                                          Place Settlement
+## 1 1996   DG                                    Deutschland       11.8
+## 2 1996    1                             Schleswig-Holstein       10.8
+## 3 1996 1001                    Flensburg, Kreisfreie Stadt       47.3
+## 4 1996 1002       Kiel, Landeshauptstadt, Kreisfreie Stadt       52.1
+## 5 1996 1003           L\201beck, Hansestadt, Kreisfreie Stadt       30.2
+## 6 1996 1004                   Neum\201nster, Kreisfreie Stadt       46.4
+##   Recreation Agriculture Forest
+## 1        0.7        54.1   29.4
+## 2        0.7        73.0    9.3
+## 3        5.1        25.1    6.0
+## 4        1.3        34.7    3.3
+## 5        2.9        39.7   12.9
+## 6        4.9        46.9    3.4
+</code></pre></div></div>
+
+<h2 id="boxplot">Boxplot</h2>
+<p>A boxplot is probably the most fundamental way to perform a visual data exploration. It generally shows the median along with the 25% and 75% quartiles (box and line within) as well as the value range which is within a range of 1.5 times the inter-quartile range (i.e. the size of the box which is also called spread). Values outside the latter range are indicated as outliers. All those settings can be changed.</p>
+
+<p>Producing a boxplot is staright forward (the x-axis lables are just the column names):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boxplot</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">])</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-3-1.png" alt="" /><!-- --></p>
+
+<p>As can be seen, outliers in terms of the box-plot logic are clearly identifieable although this logic does not actually proof if an observation is an outlier. Hence, one has to cross-check the data and if there is no actual sign for an outliers, then keep the data as is! However, since “outliers”” might have a strong influence on further analyisis, one could check some kind of transformation to reduce the value range. The following example shows a root and logarithmic transformation. In order to distinguish the plots, we add a title using the <code class="highlighter-rouge">main</code> parameter:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par_org</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">par</span><span class="p">()</span><span class="w">
+</span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">boxplot</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">],</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Original"</span><span class="p">)</span><span class="w">
+</span><span class="n">boxplot</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">]</span><span class="o">**</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Square root"</span><span class="p">)</span><span class="w">
+</span><span class="n">boxplot</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Cube root"</span><span class="p">)</span><span class="w">
+</span><span class="n">boxplot</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">]),</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Log"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-4-1.png" alt="" /><!-- --></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">par_org</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="histograms">Histograms</h2>
+<p>Histograms are usefull for getting an idea of the distribution of the dataset. Visualization is straight forward:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hist</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-6-1.png" alt="" /><!-- --></p>
+
+<h2 id="qq-plots">QQ plots</h2>
+<p>While historgramms just give an idea, QQ plots give a more reliable estimate if a data set follows a specific distribution.</p>
+
+<p>If you are just interested in a normal distribution, you can use <code class="highlighter-rouge">qqnorm</code> for this. In order to ease the interpretation, we will also add a theoretical line which runs through the 25% and 75% quartile. If your data does not deviate considerably from this line, chances are high that it actually follows the theoretical distributino used to compute the plot (in the following case, this is a normal distribution):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">qqnorm</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="p">)</span><span class="w">
+</span><span class="n">qqline</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="n">quantile</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">0.75</span><span class="p">),</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">qnorm</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="m">0.75</span><span class="p">)),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-7-1.png" alt="" /><!-- --></p>
+
+<p>Again, using different transformations might be of advantage (or not in this case!, taken from Zuur et al. 2007):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)){</span><span class="w">
+  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">0</span><span class="p">){</span><span class="w">
+    </span><span class="n">qqnorm</span><span class="p">((</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="o">**</span><span class="n">p</span><span class="m">-1</span><span class="p">)</span><span class="o">/</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="s2">"Normal Q-Q Plot, y**p-1/p for "</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">))</span><span class="w">
+    </span><span class="n">qqline</span><span class="p">((</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="o">**</span><span class="n">p</span><span class="m">-1</span><span class="p">)</span><span class="o">/</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w">  
+  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">qqnorm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Normal Q-Q Plot, log(y)"</span><span class="p">)</span><span class="w">
+    </span><span class="n">qqline</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Agriculture</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-8-1.png" alt="" /><!-- --></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">par_org</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If you want to use any other distribution, use <code class="highlighter-rouge">qqplot</code> instead and provide the distribution to the function. For the line, compute the 25% and 75% quantile and add it with <code class="highlighter-rouge">abline</code>. Since the latter function requires an intercept and slope for drawing the line, you have to compute it by yourself or just compute a simple linear model for that using <code class="highlighter-rouge">lm</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span><span class="w">
+</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">ppoints</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">)))</span><span class="w">
+</span><span class="n">qqplot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Normal"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">lm</span><span class="p">(</span><span class="n">quantile</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))</span><span class="w"> </span><span class="o">~</span><span class="w"> 
+     </span><span class="n">quantile</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rchisq</span><span class="p">(</span><span class="n">ppoints</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">)),</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">qqplot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Chi squared"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">lm</span><span class="p">(</span><span class="n">quantile</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))</span><span class="w"> </span><span class="o">~</span><span class="w"> 
+     </span><span class="n">quantile</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgamma</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span><span class="w">
+</span><span class="n">qqplot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Gamma"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">lm</span><span class="p">(</span><span class="n">quantile</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))</span><span class="w"> </span><span class="o">~</span><span class="w"> 
+     </span><span class="n">quantile</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rweibull</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">qqplot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Weibull"</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">lm</span><span class="p">(</span><span class="n">quantile</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))</span><span class="w"> </span><span class="o">~</span><span class="w"> 
+     </span><span class="n">quantile</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">probs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.75</span><span class="p">))),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-9-1.png" alt="" /><!-- --></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">par_org</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="scatterplot">Scatterplot</h2>
+<p>Scatterplot, i.e. the mother of all plots, focuses on the relationship between variables. The x-axis should be used for the (more) independent variable, the y-axis for the (more) dependent variable.</p>
+
+<p>Again, creating such a plot is very simple:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Recreation</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-10-1.png" alt="" /><!-- -->
+The axis lables are just the column names of the data frame but for this stage of data analysis, this is more than fine. If you finally decide which graphic should be included in a final presentation (e.g. publication), then the right time for nice lables and other stuff has come. But priot to that, pimping is just a waste of time.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">lu</span><span class="o">$</span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">lu</span><span class="o">$</span><span class="n">Recreation</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-11-1.png" alt="" /><!-- --></p>
+
+<p>If you are interested in the relation between all (or many) variables in your dataset, just supply the entire data frame or a column subset of it to <code class="highlighter-rouge">plot</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">lu</span><span class="p">[,</span><span class="w"> </span><span class="n">numc</span><span class="p">])</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-12-1.png" alt="" /><!-- --></p>
+
+<h2 id="coplot">Coplot</h2>
+<p>As a final example, a coplot might be of some value. It is as scatterplot but the visualized relationship is splitted in accordance to value ranges of (an)other variable(s). The call to <code class="highlighter-rouge">coplot</code> is again straight forward. Left of the <code class="highlighter-rouge">|</code> are the two variables which will be included in the actual scatterplots, to the right is the variable which is used for the splits. If more than one variable should be used, the variables are combined with a <code class="highlighter-rouge">+</code> (not included here because of figure margin restrictions):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">coplot</span><span class="p">(</span><span class="n">Forest</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Agriculture</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Settlement</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lu</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/moer-bsc-project-seminar-SDM//assets/images/rmd_images/vis_dat_expl/unnamed-chunk-13-1.png" alt="" /><!-- --></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-12T16:28:34+01:00">February 12, 2020</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit02/unit02-10_aggregating.html" class="pagination--pager" title="Example: Aggregation Statistics
+">Previous</a>
+    
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit02/unit02-12_clean_your_data.html" class="pagination--pager" title="Clean Your Data
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+      <li><a href="https://twitter.com/EnvIn_UMR"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="https://github.com/GeoMOER"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="http://localhost:4000/moer-bsc-project-seminar-SDM/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> &copy; 2020 Lab of Environmental Informatics
+. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>, <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> &amp; <a href="https://www.uni-marburg.de/fb19" rel="nofollow">Geography@Marburg University</a>.</div>
+
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/moer-bsc-project-seminar-SDM/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

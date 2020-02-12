@@ -1,0 +1,576 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.13.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Code Styling | Lab of Environmental Informatics</title>
+<meta name="description" content="Using a consistent and intuitive coding style helps both you as the programmer and others as re-users of your source code. A comprehensive coding style helps to read and understand the code and hence reduces the intrinsic complexity of programming.Suggested code style for a starterIn the web, there are many definitive coding styles for all sorts of programming language and also they are called definitive, there is generally more than one style. Some to a certain degree consistent opinions you could use to build up your own mind and get a general idea of code styling can be found in an RStudio’s blog entry by Joseph Rickert.In this course we suggest to follow the style guide by Hadley Wickham published as part of the tydiverse package collection when you write scripts or functions. Note that when it comes to functions, the R community is equally using lowerCamelCaseNames instead of the snake_case_names suggested in the guide.            	CC-BY-NC by xkcd.com  A note on roxygen documentation and R packagesWhile documentation is not for the R interpreter but for the user, documentation is mandatory required in R packages. R packages are the things which are installed or loaded if you type install.packages(...) or library(...) respectively. They are a collection of functions and classes written in R and maybe linked to C++ function or other fast running code to speed things up a little. For more information see e.g. Hadley Wickham’s book on R packages.To streamline the documentation of R package functions and classes, the utilization of the roxygen2 library is the defacto standard. Using this library, the documentation can be written at the top of the respective R file which holds the function or class code. See e.g. the files within the R folder of the mapview package at GitHub. For more information a starting point is again the afore mentioned R packages book.Please note that roxygen documentation has been developed for R packages but it is a very good idea to follow this syntax also for your individual scripts or functions in order to have a nice and informative header in your scripts.Suggested documentation headerThe following summarizes our suggestion for a documentation header to include in all scripts or functions even when these scripts are not part of an R package.#&#39; Mandatory: One short line that summarizes for what the script or function is.#&#39;#&#39; @description Optional: One to three lines describing a little more about the#&#39; script or function.#&#39; #&#39; @param Mandatory if function: One param at at time.#&#39;#&#39; @name Mandatory: Name of the script or function.#&#39;#&#39; @export Mandatory if function: Name of the function.#&#39; #&#39; @details Optional: Whatever you need to describe regarding the functionality#&#39; and/or theoretical background of your script or function.#&#39; #&#39; @references  Optional: If you use something from somebody else, handle it#&#39; like any other scientific reference/literature list.#&#39; #&#39; @examples#&#39; \dontrun{#&#39; # Mandatory if part of R package.#&#39; }#&#39; &lt;start here with your R code&gt;  # Header for lager section e.g. read datasets ----------------------------------&lt;your R code&gt;# Short comment for a code snipet e.g. a complicated loop&lt;your R code&gt;">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Lab of Environmental Informatics">
+<meta property="og:title" content="Code Styling">
+<meta property="og:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-06_code_style.html">
+
+
+  <meta property="og:description" content="Using a consistent and intuitive coding style helps both you as the programmer and others as re-users of your source code. A comprehensive coding style helps to read and understand the code and hence reduces the intrinsic complexity of programming.Suggested code style for a starterIn the web, there are many definitive coding styles for all sorts of programming language and also they are called definitive, there is generally more than one style. Some to a certain degree consistent opinions you could use to build up your own mind and get a general idea of code styling can be found in an RStudio’s blog entry by Joseph Rickert.In this course we suggest to follow the style guide by Hadley Wickham published as part of the tydiverse package collection when you write scripts or functions. Note that when it comes to functions, the R community is equally using lowerCamelCaseNames instead of the snake_case_names suggested in the guide.            	CC-BY-NC by xkcd.com  A note on roxygen documentation and R packagesWhile documentation is not for the R interpreter but for the user, documentation is mandatory required in R packages. R packages are the things which are installed or loaded if you type install.packages(...) or library(...) respectively. They are a collection of functions and classes written in R and maybe linked to C++ function or other fast running code to speed things up a little. For more information see e.g. Hadley Wickham’s book on R packages.To streamline the documentation of R package functions and classes, the utilization of the roxygen2 library is the defacto standard. Using this library, the documentation can be written at the top of the respective R file which holds the function or class code. See e.g. the files within the R folder of the mapview package at GitHub. For more information a starting point is again the afore mentioned R packages book.Please note that roxygen documentation has been developed for R packages but it is a very good idea to follow this syntax also for your individual scripts or functions in order to have a nice and informative header in your scripts.Suggested documentation headerThe following summarizes our suggestion for a documentation header to include in all scripts or functions even when these scripts are not part of an R package.#&#39; Mandatory: One short line that summarizes for what the script or function is.#&#39;#&#39; @description Optional: One to three lines describing a little more about the#&#39; script or function.#&#39; #&#39; @param Mandatory if function: One param at at time.#&#39;#&#39; @name Mandatory: Name of the script or function.#&#39;#&#39; @export Mandatory if function: Name of the function.#&#39; #&#39; @details Optional: Whatever you need to describe regarding the functionality#&#39; and/or theoretical background of your script or function.#&#39; #&#39; @references  Optional: If you use something from somebody else, handle it#&#39; like any other scientific reference/literature list.#&#39; #&#39; @examples#&#39; \dontrun{#&#39; # Mandatory if part of R package.#&#39; }#&#39; &lt;start here with your R code&gt;  # Header for lager section e.g. read datasets ----------------------------------&lt;your R code&gt;# Short comment for a code snipet e.g. a complicated loop&lt;your R code&gt;">
+
+
+
+
+
+  <meta name="twitter:site" content="@EnvIn_UMR">
+  <meta name="twitter:title" content="Code Styling">
+  <meta name="twitter:description" content="Using a consistent and intuitive coding style helps both you as the programmer and others as re-users of your source code. A comprehensive coding style helps to read and understand the code and hence reduces the intrinsic complexity of programming.Suggested code style for a starterIn the web, there are many definitive coding styles for all sorts of programming language and also they are called definitive, there is generally more than one style. Some to a certain degree consistent opinions you could use to build up your own mind and get a general idea of code styling can be found in an RStudio’s blog entry by Joseph Rickert.In this course we suggest to follow the style guide by Hadley Wickham published as part of the tydiverse package collection when you write scripts or functions. Note that when it comes to functions, the R community is equally using lowerCamelCaseNames instead of the snake_case_names suggested in the guide.            	CC-BY-NC by xkcd.com  A note on roxygen documentation and R packagesWhile documentation is not for the R interpreter but for the user, documentation is mandatory required in R packages. R packages are the things which are installed or loaded if you type install.packages(...) or library(...) respectively. They are a collection of functions and classes written in R and maybe linked to C++ function or other fast running code to speed things up a little. For more information see e.g. Hadley Wickham’s book on R packages.To streamline the documentation of R package functions and classes, the utilization of the roxygen2 library is the defacto standard. Using this library, the documentation can be written at the top of the respective R file which holds the function or class code. See e.g. the files within the R folder of the mapview package at GitHub. For more information a starting point is again the afore mentioned R packages book.Please note that roxygen documentation has been developed for R packages but it is a very good idea to follow this syntax also for your individual scripts or functions in order to have a nice and informative header in your scripts.Suggested documentation headerThe following summarizes our suggestion for a documentation header to include in all scripts or functions even when these scripts are not part of an R package.#&#39; Mandatory: One short line that summarizes for what the script or function is.#&#39;#&#39; @description Optional: One to three lines describing a little more about the#&#39; script or function.#&#39; #&#39; @param Mandatory if function: One param at at time.#&#39;#&#39; @name Mandatory: Name of the script or function.#&#39;#&#39; @export Mandatory if function: Name of the function.#&#39; #&#39; @details Optional: Whatever you need to describe regarding the functionality#&#39; and/or theoretical background of your script or function.#&#39; #&#39; @references  Optional: If you use something from somebody else, handle it#&#39; like any other scientific reference/literature list.#&#39; #&#39; @examples#&#39; \dontrun{#&#39; # Mandatory if part of R package.#&#39; }#&#39; &lt;start here with your R code&gt;  # Header for lager section e.g. read datasets ----------------------------------&lt;your R code&gt;# Short comment for a code snipet e.g. a complicated loop&lt;your R code&gt;">
+  <meta name="twitter:url" content="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-06_code_style.html">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-02-12T16:28:34+01:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/moer-bsc-project-seminar-SDM/unit02/unit02-06_code_style.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/moer-bsc-project-seminar-SDM/feed.xml" type="application/atom+xml" rel="alternate" title="Lab of Environmental Informatics Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/moer-bsc-project-seminar-SDM/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+    	<a class="site-title" href="http://localhost:4000/moer-bsc-project-seminar-SDM/" style="padding:0px"><img src="http://localhost:4000/moer-bsc-project-seminar-SDM/assets/images/logo_umr.png" style="padding-right:15px">Lab of Environmental Informatics</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//units.html" >Course units</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//about.html" >About</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//index.html" >Course home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="https://oer.uni-marburg.de/goto.php?target=crs_326&client_id=mriliasmooc" >OER home</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="http://localhost:4000/moer-bsc-project-seminar-SDM//sitemap.html" >Sitemap</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+
+  
+    
+      
+      
+      
+    
+    
+	  
+        <nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+    
+      
+      
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit01/unit01-01_the_very_basics.html" class="">01 The very basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit02/unit02-01_more_basics.html" class="">02 More basics</a>
+		  </span>
+          <ul>
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-01_more_basics.html" class="">More basics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-02_operators.html" class="">Operators</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-03_decisions_loops.html" class="">Decisions and Loops</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-04_if-then-else.html" class="">Example: If-then-else</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-05_for-loops.html" class="">Example: For-loops</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-05b_loop_exercise.html" class="">Exercise: Loop and Conquer</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-06_code_style.html" class="active">Code Styling</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-07_data_io.html" class="">Tabulated Data I/O</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-08_visualization.html" class="">Visualization</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-09_csv_io.html" class="">Example: CSV I/O</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-10_aggregating.html" class="">Example: Aggregation Statistics</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-11_exploration.html" class="">Example: Visual Data Exploration</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-12_clean_your_data.html" class="">Clean Your Data</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-13_na.html" class="">Example: Missing Values</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-14_datetime.html" class="">Example: Date/Time</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-15_sorting.html" class="">Example: Sorting</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-16_cleaning.html" class="">Example: Cleaning Columns</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-17_merging.html" class="">Example: Merging</a></li>
+			  
+            
+              
+			  
+			    <li><a href="/moer-bsc-project-seminar-SDM//unit02/unit02-18_get_prepared.html" class="">Get prepared for SDM</a></li>
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+        
+        <li>
+          <span class="nav__sub-title">
+		     <a href="/moer-bsc-project-seminar-SDM//unit03/unit03-01_spatial_data.html" class="">03 Working with spatial data</a>
+		  </span>
+          <ul>
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+              
+			  
+            
+          </ul>
+        </li>
+	  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+  </ul>
+</nav>
+	  
+    
+  
+  </div>
+  
+
+
+
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Code Styling">
+    <meta itemprop="description" content="Using a consistent and intuitive coding style helps both you as the programmer and others as re-users of your source code. A comprehensive coding style helps to read and understand the code and hence reduces the intrinsic complexity of programming.Suggested code style for a starterIn the web, there are many definitive coding styles for all sorts of programming language and also they are called definitive, there is generally more than one style. Some to a certain degree consistent opinions you could use to build up your own mind and get a general idea of code styling can be found in an RStudio’s blog entry by Joseph Rickert.In this course we suggest to follow the style guide by Hadley Wickham published as part of the tydiverse package collection when you write scripts or functions. Note that when it comes to functions, the R community is equally using lowerCamelCaseNames instead of the snake_case_names suggested in the guide.            	CC-BY-NC by xkcd.com  A note on roxygen documentation and R packagesWhile documentation is not for the R interpreter but for the user, documentation is mandatory required in R packages. R packages are the things which are installed or loaded if you type install.packages(...) or library(...) respectively. They are a collection of functions and classes written in R and maybe linked to C++ function or other fast running code to speed things up a little. For more information see e.g. Hadley Wickham’s book on R packages.To streamline the documentation of R package functions and classes, the utilization of the roxygen2 library is the defacto standard. Using this library, the documentation can be written at the top of the respective R file which holds the function or class code. See e.g. the files within the R folder of the mapview package at GitHub. For more information a starting point is again the afore mentioned R packages book.Please note that roxygen documentation has been developed for R packages but it is a very good idea to follow this syntax also for your individual scripts or functions in order to have a nice and informative header in your scripts.Suggested documentation headerThe following summarizes our suggestion for a documentation header to include in all scripts or functions even when these scripts are not part of an R package.#&#39; Mandatory: One short line that summarizes for what the script or function is.#&#39;#&#39; @description Optional: One to three lines describing a little more about the#&#39; script or function.#&#39; #&#39; @param Mandatory if function: One param at at time.#&#39;#&#39; @name Mandatory: Name of the script or function.#&#39;#&#39; @export Mandatory if function: Name of the function.#&#39; #&#39; @details Optional: Whatever you need to describe regarding the functionality#&#39; and/or theoretical background of your script or function.#&#39; #&#39; @references  Optional: If you use something from somebody else, handle it#&#39; like any other scientific reference/literature list.#&#39; #&#39; @examples#&#39; \dontrun{#&#39; # Mandatory if part of R package.#&#39; }#&#39; &lt;start here with your R code&gt;  # Header for lager section e.g. read datasets ----------------------------------&lt;your R code&gt;# Short comment for a code snipet e.g. a complicated loop&lt;your R code&gt;">
+    <meta itemprop="datePublished" content="February 12, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Code Styling
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> In this example</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#suggested-code-style-for-a-starter">Suggested code style for a starter</a></li>
+  <li><a href="#a-note-on-roxygen-documentation-and-r-packages">A note on roxygen documentation and R packages</a></li>
+  <li><a href="#suggested-documentation-header">Suggested documentation header</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>Using a consistent and intuitive coding style helps both you as the programmer and others as re-users of your source code. A comprehensive coding style helps to read and understand the code and hence reduces the intrinsic complexity of programming.</p>
+
+<h2 id="suggested-code-style-for-a-starter">Suggested code style for a starter</h2>
+<p>In the web, there are many <em>definitive</em> coding styles for all sorts of programming language and also they are called definitive, there is generally more than one style. Some to a certain degree consistent opinions you could use to build up your own mind and get a general idea of code styling can be found in an <a href="https://rviews.rstudio.com/2016/12/02/writing-good-r-code-and-writing-well/" target="_blank">RStudio’s blog entry by Joseph Rickert</a>.</p>
+
+<p>In this course we suggest to follow the <a href="http://style.tidyverse.org/" target="_blank">style guide by Hadley Wickham</a> published as part of the tydiverse package collection when you write scripts or functions. Note that when it comes to functions, the R community is equally using <em>lowerCamelCaseNames</em> instead of the <em>snake_case_names</em> suggested in the guide.</p>
+
+<figure class="">
+  
+    <img src="https://imgs.xkcd.com/comics/code_quality.png" alt="XKCD comic on code quality." />
+  
+  
+  
+	<figcaption><a href="https://xkcd.com/1513/" target="_blank">CC-BY-NC by xkcd.com</a>
+</figcaption>
+  
+</figure>
+
+<h2 id="a-note-on-roxygen-documentation-and-r-packages">A note on roxygen documentation and R packages</h2>
+<p>While documentation is not for the R interpreter but for the user, documentation is mandatory required in R packages. R packages are the things which are installed or loaded if you type <code class="highlighter-rouge">install.packages(...)</code> or <code class="highlighter-rouge">library(...)</code> respectively. They are a collection of functions and classes written in R and maybe linked to C++ function or other fast running code to speed things up a little. For more information see e.g. <a href="http://r-pkgs.had.co.nz/" target="_blank">Hadley Wickham’s book on R packages</a>.</p>
+
+<p>To streamline the documentation of R package functions and classes, the utilization of the roxygen2 library is the defacto standard. Using this library, the documentation can be written at the top of the respective R file which holds the function or class code. See e.g. the files within the <em>R</em> folder of the <a href="https://github.com/r-spatial/mapview" target="_blank">mapview package at GitHub</a>. For more information a starting point is again the afore mentioned R packages book.</p>
+
+<p class="notice--info">Please note that roxygen documentation has been developed for R packages but it is a very good idea to follow this syntax also for your individual scripts or functions in order to have a nice and informative header in your scripts.</p>
+
+<h2 id="suggested-documentation-header">Suggested documentation header</h2>
+<p>The following summarizes our suggestion for a documentation header to include in all scripts or functions even when these scripts are not part of an R package.</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">#' Mandatory: One short line that summarizes for what the script or function is.</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @description Optional: One to three lines describing a little more about the</span><span class="w">
+</span><span class="cd">#' script or function.</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' @param Mandatory if function: One param at at time.</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @name Mandatory: Name of the script or function.</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @export Mandatory if function: Name of the function.</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' @details Optional: Whatever you need to describe regarding the functionality</span><span class="w">
+</span><span class="cd">#' and/or theoretical background of your script or function.</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' @references  Optional: If you use something from somebody else, handle it</span><span class="w">
+</span><span class="cd">#' like any other scientific reference/literature list.</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' @examples</span><span class="w">
+</span><span class="cd">#' \dontrun{</span><span class="w">
+</span><span class="cd">#' # Mandatory if part of R package.</span><span class="w">
+</span><span class="cd">#' }</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+
+</span><span class="o">&lt;</span><span class="n">start</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">code</span><span class="o">&gt;</span><span class="w">
+
+  
+</span><span class="c1"># Header for lager section e.g. read datasets ----------------------------------</span><span class="w">
+</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">code</span><span class="o">&gt;</span><span class="w">
+
+</span><span class="c1"># Short comment for a code snipet e.g. a complicated loop</span><span class="w">
+</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">code</span><span class="o">&gt;</span><span class="w">
+
+</span></code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-12T16:28:34+01:00">February 12, 2020</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit02/unit02-05b_loop_exercise.html" class="pagination--pager" title="Exercise: Loop and Conquer
+">Previous</a>
+    
+    
+      <a href="/moer-bsc-project-seminar-SDM/unit02/unit02-07_data_io.html" class="pagination--pager" title="Tabulated Data I/O
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+    
+      <li><a href="https://twitter.com/EnvIn_UMR"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="https://github.com/GeoMOER"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="http://localhost:4000/moer-bsc-project-seminar-SDM/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a> &copy; 2020 Lab of Environmental Informatics
+. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>, <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> &amp; <a href="https://www.uni-marburg.de/fb19" rel="nofollow">Geography@Marburg University</a>.</div>
+
+
+
+      </footer>
+    </div>
+
+    
+  <script src="/moer-bsc-project-seminar-SDM/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
