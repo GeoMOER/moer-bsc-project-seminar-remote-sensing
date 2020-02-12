@@ -53,45 +53,29 @@ Each course aims to create area-wide species distribution maps for a group of or
 | Session | Topic | Content |
 |---------|-------|---------|
 || **R Basics** ||
-| 01 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio, R Markdown, GitHub |
+| 01 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
 | 02 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
 | 03 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
-|| **Species Distribution Modelling** ||
-| 04 | SDM theory                   | Niches, climate space, biotic and abiotic interactions, dispersal   |
-| 05 | SDM methods I                | Student presentations and examples with toy data: Profile methods, classical regression models |
-| 06 | SDM methods II               | Student presentations and examples with toy data: Machine learning methods, Bayesian methods, others   |
-|| **Research project** ||
-| 07 | Outline                      | Project introduction, objectives, procedure, available data, data to be obtained |
-| 08 | Dealing with real data       | Reading, tailoring, NA handling, reprojecting, describing, visualising, aggregating, merging, subsetting and writing of the project dataset |
-| 09 | Dataset complementation I    | Adding raster remote sensing data to the project dataset |
-| 10 | Dataset complementation II   | Adding vector distribution data to the project dataset: Georeferencing |
-| 11 | Modelling                    | Area-wide predictive modelling |
-| 12 | Paper writing                | Candidate journals, discussion of content and individual contributions, drafting of online manuscript template |
-|| **Evaluation** ||
-| 13 | Evaluation                   | Official course evaluation session, continue manuscript writing |
-|| **Wrap up** ||
-| 14 | Wrap up                      | Manuscripts submission, time for questions, goodbye |
-
-
-
-
-
-<!--
-3 SDM Techniken, evtl. angelehnt an rspatial HTML https://www.rspatial.org/raster/sdm/index.html
-4 GIS Schnittstelle: QGIS Georeferenzieren
-5 Fernerkundung Schnittstelle: Umweltlayer besorgen, projizieren, einladen
-6 Punktdaten holen (von Christian, Tshikolovits?)
-7 Modellieren: Verschieden Techniken besprechen, evtl vorstellen lassen und ausprobieren
-9 Auswahl und Vorstellung verschiedener candidate journals
-10 Entwurf paper und onlinedokument anlegen
-11 Gemeinsames Arbeiten an paper: Aufgaben definieren, verteilen (Literaturrecherche, gemeinsame Literaturdatenbank anlegen)
--->
+|| **Iteration I: Start simple** ||
+| 04 | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 05 | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
+| 06 | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
+| 07 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+|| **Iteration II: Reality** ||
+| 08 | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
+| 09 | Built-in hold||
+| 10 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
+| 11 | Advanced Modelling II  	    | Predictions, outlook |
+| 12 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
 
 The graded course certificate will be based on individual assignments written in R Markdown and published on GitHub.
 The individual assignments will be defined in the respective course sessions along with the information whether they will be graded or not.
+
+Note:
+Prüfungsleistung ist eine Hausarbeit über ein verwandtes Thema (anderes Gebiet, anderes Modell, andere Daten, etc.)
 
 
 # Preparation and prerequisites
