@@ -1,5 +1,5 @@
 ---
-title: Remote sensing for solving challenges of the 21th century
+title: Remote sensing: Linking LiDAR and satellite data with machine learning
 layout: splash
 date: '2019-10-15 13:00:00 +0100'
 header:
