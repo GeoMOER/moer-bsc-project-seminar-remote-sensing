@@ -19,10 +19,26 @@ In the context of spatial data and Geographic Information Systems, nodes are usu
 {% include figure image_path="/assets/images/point_linestring_polygon_robinlovelace.png" caption="The basic concepts of a vector data model. Source: geocompr.robinlovelace.net" %}
 
 
+## Vector data formats
+
+[Why you should use Geopackage instead of Shapefile](https://www.gis-blog.com/geopackage-vs-shapefile/)
+
+
+|GeoPackage | Shapefile |
+|-|-|
+|OGC standard, Open | Owned by ESRI |
+|Database structure| |
+|Single file (.gpkg) | Multi File (.shp,.dbf.,.shx,.prj)|
+|Flexible| Only one Geometry type per file|
+|There are nearly no limitations|File size is restricted to 2 GB, No real 3D support, Attributes only 10 letters|
+
+
+
+
 
 ### More Information
 
-* More detailed information for vector data can be found at [Geocomputation with R - Vector data](https://geocompr.robinlovelace.net/spatial-class.html#raster-data){:target="_blank"}.
+* More detailed information for vector data can be found at [Geocomputation with R - Vector data](https://geocompr.robinlovelace.net/spatial-class.html#vector-data){:target="_blank"}.
 
 
 <!-- more examples to be added in some bright future -->

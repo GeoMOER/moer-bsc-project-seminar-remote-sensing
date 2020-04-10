@@ -46,10 +46,9 @@ At the end of this course you should be able to
 
 # Course features
 
-Given the actual COVID-19 situation, this course is intended as a blended learning module in our study program and will be conducted online-only upon further notice.
-The instructors will set up a digital meeting room for the official duration of the course on a weekly basis (Wednesdays, 10:15 - 14:00, **starting 22.4.2020**).
-We expect to resume presence teaching sometime during the semester.
-Participants will be informed by email as soon as possible when the situation changes.
+Given the actual COVID-19 situation, this course is intended as a blended learning module in our study program and will be conducted online-only upon further notice.  
+The instructors will set up a digital meeting room for the official duration of the course on a weekly basis (Wednesdays, 10:15 - 14:00, **starting 22.4.2020**). Course units will consits of one topic (see table below), different ways of their practical application in R and an exercise for you to apply the knowledge. The topics and will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following wednesday.  
+Further there will we a forum and chat group to discuss organizational matters and questions. We expect to resume presence teaching sometime during the semester. Participants will be informed by email as soon as possible when the situation changes.
 
 Organizational matters and further details will be discussed during our first digital kick-off session, 
 for which all participants (those who joined the course via [MARVIN](https://marvin.uni-marburg.de){:target="_blank"}) will be invited by email.
