@@ -55,8 +55,13 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 
 
 
+# Course overview
 
-# Syllabus
+![Course Workflow]({{ site.baseurl }}/assets/images/course_workflow.svg)<!-- -->
+
+
+
+# Session overview
 
 | Session | Topic | Content |
 |---------|-------|---------|

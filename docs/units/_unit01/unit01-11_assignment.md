@@ -1,5 +1,5 @@
 ---
-title: "Marked Assignment: Hello R, Hello GitHub"
+title: "Assignment: Hello R"
 toc: true
 toc_label: In this worksheet
 ---

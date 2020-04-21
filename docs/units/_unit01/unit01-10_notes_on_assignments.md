@@ -1,5 +1,5 @@
 ---
-title: "Project management and Working Environment"
+title: "Project management and working environment"
 toc: true
 toc_label: In this info
 ---
