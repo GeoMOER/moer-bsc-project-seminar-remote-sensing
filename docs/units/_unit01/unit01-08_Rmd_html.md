@@ -32,9 +32,9 @@ summary(cars)
 
 ## This is another header
 
-You can also embed plots, for example:
+You can also embed images, for example:
 
-![]({{ site.baseurl }}/assets/images/rmd_images/rmd_html_out/unnamed-chunk-2-1.png)<!-- -->
+![]({{ site.baseurl }}/assets/images/logo_umr.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot (see below).
 
@@ -71,9 +71,9 @@ summary(cars)
 
 ## This is another header
 
-You can also embed plots, for example:
+You can also embed images, for example:
 
-![]({{ site.baseurl }}/assets/images/rmd_images/rmd_html_out/unnamed-chunk-2-1.png)<!-- -->
+![]({{ site.baseurl }}/assets/images/logo_umr.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot (see below).
 

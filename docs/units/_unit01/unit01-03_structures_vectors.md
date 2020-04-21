@@ -38,16 +38,18 @@ print(my_vector_3)
 ## [1] 10  9  8  7  6  5
 ```
 
+
+You can omit the `print` function and just type the variable to show its content.
+
 ```r
 my_vector_4 <- seq(from=0, to=30, by=10)
-print(my_vector_4)
+my_vector_4
 ```
 
 ```
 ## [1]  0 10 20 30
 ```
-You can skip the `print` function but just type the variable name if your 
-standard out is the console. We will assume that from now on.
+
 
 ## Length of a vector
 To get the lenght of a vector, use the `length` function:
