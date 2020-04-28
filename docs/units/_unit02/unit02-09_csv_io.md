@@ -6,23 +6,23 @@ toc_label: In this example
 
 
 
-## Readading data from csv files
+## Reading data from csv files
 
 Reading csv files is realized using the `read.table` function from R's utils
 library. The function will return a data frame which contains the information of
-the csv file (example taken from [here](https://www.regionalstatistik.de/genesis/online/){:target="_blank"}) .
+the csv file.
 
 
 ```r
-df <- read.table(paste0(envrmt$path_data_csv, "/AI001_gebiet_flaeche.csv"),
+df <- read.table("data/diamonds.csv"),
                  skip = 4, header = TRUE, sep = ";", dec = ",")
 ```
 
 As you can see, the `read.table` function gets several arguments (which is common for many functions). The first one gives the filename inclducing the path to the file. 
 * `skip = 4` tells the function to skip the first four lines (which are plain text lines in this case and not tabulated values)
 * `header = TRUE` tells the function, that the csv file has a header line which is used by `read.table` to name the columns of the returning data frame
-* `sep = ";"` defines the separator of the individual columns in the data frame
-* `dec = ","` defines the decimal separator used in the dataset
+* `sep = ","` defines the separator of the individual columns in the data frame
+* `dec = "."` defines the decimal separator used in the dataset
 
 A note on the sequence of the arguments: the sequence of the arguments does
 not matter as long as you name them explicetly. If you do not use the argument
@@ -42,28 +42,17 @@ head(df,2)
 ```
 
 ```
-##      X X.1                  X.2
-## 1 1996  DG          Deutschland
-## 2 1996  01   Schleswig-Holstein
-##   Anteil.Siedlungs..und.Verkehrsfläche.an.Gesamtfl.
-## 1                                              11,8
-## 2                                              10,8
-##   Anteil.Erholungsfläche.an.Gesamtfläche
-## 1                                    0,7
-## 2                                    0,7
-##   Anteil.Landwirtschaftsfläche.an.Gesamtfläche
-## 1                                         54,1
-## 2                                         73,0
-##   Anteil.Waldfläche.an.Gesamtfläche
-## 1                              29,4
-## 2                               9,3
+##  carat cut     color clarity depth table price     x     y     z
+##  <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+##1  0.23 Ideal   E     SI2      61.5    55   326  3.95  3.98  2.43
+##2  0.21 Premium E     SI1      59.8    61   326  3.89  3.84  2.31
 ```
 
 ## Writing data to csv files
 Writing data is as easy as reading it. Just use the `write.table` function.
 
 ```r
-write.table(df, file = paste0(envrmt$path_data_tmp, "new.csv"), 
+write.table(df, file = "data/new.csv", 
             sep = ",", dec = ".")
 ```
 As you can see, you can define any column or decimal separator.
@@ -76,8 +65,8 @@ documentation or search the web.
 If you stay within R for reading and writing R objects from and to data files, you could also use the serialization of readRDS and saveRDS.
 
 ```r
-saveRDS(df, file = paste0(envrmt$path_data_tmp, "new.rds"))
+saveRDS(df, file = "data/new.rds")
 
 # Read data to different variable
-df2 = readRDS(paste0(envrmt$path_data_tmp, "new.rds"))
+df2 = readRDS("data/new.rds")
 ```
