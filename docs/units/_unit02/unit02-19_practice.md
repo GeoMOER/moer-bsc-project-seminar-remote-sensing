@@ -41,6 +41,8 @@ Now we want to find out if there is any difference between the petal length of t
 
 Is there any difference between the species?
 
+> Calculate the median of the petal length of every species. (`aggregate`)
+
 ## Statistics with multiple variables
 
 1. Create a scatterplot with the petal length on the x-axis and the petal width on the y-axis. (`plot`)
