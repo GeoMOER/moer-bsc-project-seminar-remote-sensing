@@ -1,5 +1,5 @@
 ---
-title: Homework: Prepare R Spatial
+title: "Homework: Prepare R Spatial"
 ---
 
 1. If you haven't already, get yourself an account for the [Sentinel Hub](https://scihub.copernicus.eu/dhus/#/home) of the ESA.
