@@ -8,7 +8,6 @@ This exercise will lead you through some of the most basic and important steps f
 ## Things you need for this worksheet
   * [R](https://cran.r-project.org/){:target="_blank"} — the interpreter can be installed on any operation system.
   * [RStudio](https://www.rstudio.com/){:target="_blank"} — we recommend to use R Studio for (interactive) programming with R.
-  * [Git](https://git-scm.com/downloads){:target="_blank"} environment for your operating system. For Windows users with little experience on the command line we recommend [GitHub Desktop](https://desktop.github.com/){:target="_blank"}.
 
 
 
@@ -28,7 +27,7 @@ Create a map of Germany with the following features:
 
 
 
-Save your R functions and Rmd file in your course repository, knitr it, update (i.e. commit) your local repository and publish (i.e. push) it to the GitHub classroom. Make sure that the created html file is also part of your GitHub repository. Make sure that the created map does not exceed 2mb file size.
+Save your R functions and Rmd file in your project structure, knitr it and upload the html file to Ilias.
 
 
 
