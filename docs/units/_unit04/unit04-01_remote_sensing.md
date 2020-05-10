@@ -1,0 +1,31 @@
+---
+title: "Introduction to Remote Sensing"
+---
+
+Get a brute-force introduction to working with different kinds of spatial data in R.
+
+<!--more-->
+
+
+## Learning objectives
+At the end of this unit you should be able to
+
+* know the basics about different sensor types
+* have a understanding of how the light spectrum works,
+* know why we are able to measure different things from space, 
+* grasp the advantages and disadvantages of different satellite products,
+* work with Sentinel Data in R
+
+
+
+## Remote Sensing
+
+Working with remote sensing data requires many decisions prior to the data acquisition.
+Do I use spectral data? If so what resolutions do I need? For which year will I need my earth observation?
+Do I need a time series? Most of these questions are dependend on the research goal (obviously!).
+However, an overview of what data is out there is very helpful for these decisions.
+
+A good starting point can found by [Pettorelli et al. 2018](https://www.researchgate.net/publication/324537528_Conservation_Technology_Series_Issue_4_SATELLITE_REMOTE_SENSING_FOR_CONSERVATION).
+Although it is a bit lengthy and tailored towards nature conservation by the WWF, the guide is not to technical and understandable without much prior knowledge.
+Some good figures from this guide are used in the subsequent lessons.
+

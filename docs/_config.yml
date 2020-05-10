@@ -149,7 +149,7 @@ defaults:
       path: ""
       type: unit04
     values:
-      category: "04 SDM theory"
+      category: "04 Multispectral Remote Sensing"
       tags: "Unit 04"
       layout: single
       sidebar:
