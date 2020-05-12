@@ -1,10 +1,10 @@
 ---
-title: "Learning by doing: Sentinel-2 application"
+title: "Learning by Doing: Sentinel-2 Application"
 --- 
 
 
-In this exercise we want to estimate the area of water bodies in our Sentinel Scene from Lahntal.
-So, load in your prepared Sentinel stack from Lahntal from the last exersice.
+In this exercise we want to estimate the area of water bodies in our Sentinel scene from Lahntal.
+As a start, load in your prepared Sentinel stack from Lahntal from the previous exercise.
 
 
 ## "Vegetation" indices
@@ -19,8 +19,8 @@ So, load in your prepared Sentinel stack from Lahntal from the last exersice.
 
 ## Water bodies
 
-* Divide your NDVI Layer into two groups. Water and everything else. You can use the `raster::reclassify` function.
-* Now its just a matter of counting pixels to find out the area of water bodies.
+* Divide your NDVI layer into two groups: water and everything else. You can use the `raster::reclassify` function.
+* Now it is just a matter of counting pixels to find out the area of water bodies.
 
 
 
