@@ -18,3 +18,6 @@ Multispectral remote sensing makes use of this fact by relating the reflectance 
 ![The light spectrum](https://www.researchgate.net/profile/Zoltan_Szantoi/publication/258241350/figure/fig2/AS:614122790072322@1523429691663/Diagram-of-the-lights-electromagnetic-spectrum-showing-the-different-wavelengths-of_W640.jpg)
 
 
+
+![Reflectance of different surfaces](https://seos-project.eu/classification/images/spectral_signatures_450.jpg)
+
