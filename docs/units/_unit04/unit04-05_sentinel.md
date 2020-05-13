@@ -24,6 +24,12 @@ Fortunately, since last year the ESA also offers Level 2A data for download whic
 
 Therefore, in this course we can focus on actually using Sentinel-2 data in research and earth observation without worrying too much about technical details.
 
+## Sentinel-2 Bands
+
+![S2 band overview](https://s3.amazonaws.com/content.satimagingcorp.com/media/cms_page_media/1530/image001.png)
+
+
+
 ## Where is Sentinel-1?
 
 The Sentinel Program consists of six missions from which four already launched in 2020. An overview of the program can be found [here](https://sentinel.esa.int/web/sentinel/missions){:target="_blank"}.
