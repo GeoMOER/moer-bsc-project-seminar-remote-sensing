@@ -22,5 +22,13 @@ As a start, load in your prepared Sentinel stack from Lahntal from the previous 
 * Divide your NDVI layer into two groups: water and everything else. You can use the `raster::reclassify` function.
 * Now it is just a matter of counting pixels to find out the area of water bodies.
 
+## Assignment
+Write everything in a Rmd file, knitr it and upload the html file to Ilias.
+
+
+
+
+
+
 
 

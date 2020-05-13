@@ -2,7 +2,7 @@
 title: "Introduction to Remote Sensing"
 ---
 
-Get a brute-force introduction to working with different kinds of spatial data in R.
+Learn the basic of satellite remote sensing and Sentinel-2.
 
 <!--more-->
 
