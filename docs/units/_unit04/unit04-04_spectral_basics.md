@@ -9,7 +9,7 @@ and how light and color work.
 
 ![The dark side of the moon](https://cdn02.plentymarkets.com/inxhhi1199w1/item/images/353639396/full/pinkfloyd-darkside.jpg)
 
-First of all we regard light as a wave with a certain wavelength. Different wavelengths of light appear to humans as different colors because we have two different cone cells in the eye which are sensitive to different wavelengths. Thus, wavelengths appear to us as **red**, **green** and **blue**.
+First of all we regard light as a wave with a certain wavelength. Different wavelengths of light appear to humans as different colors because we have three different cone cells in the eye which are sensitive to different wavelengths. Thus, wavelengths appear to us as **red**, **green** and **blue**.
 All other colors are a mixture of these three primary colors.
 
 Although sunlight appears white for a human observer, it consists of a multitude of different wavelengths. Objects appear colorful to us, because they absorb and reflect certain wavelengths to a different extent.
