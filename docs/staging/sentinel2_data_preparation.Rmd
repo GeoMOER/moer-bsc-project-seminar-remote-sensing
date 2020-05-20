@@ -1,0 +1,104 @@
+---
+title: "RS"
+author: "Marvin Ludwig"
+date: "20/05/2020"
+output: html_document
+---
+
+## Data acquisition and first steps
+
+* Download the Sentinel-2 scene for Marburg from 23rd March 2020. Make sure you get the L2A dataset.
+* Create a new R project or use your existing one for the course and save the downloaded zipfile in your raw data folder.
+
+```{r}
+unzip("data/raw/S2A_MSIL2A_20200325T103021_N0214_R108_T32UMB_20200325T144818.zip", overwrite = FALSE, exdir = "data/")
+```
+
+
+
+
+## Data preparation 1
+
+* Create a raster stack of the four bands which have 10 m resolution. Which bands are these and what colors do they represent?
+* Print out the names of these bands.
+* Change the names according to the represented color.
+
+
+```{r}
+
+pathL2A = "/home/marvin/casestudies/course_sen_lidar/data/S2A_MSIL2A_20200325T103021_N0214_R108_T32UMB_20200325T144818.SAFE/"
+
+searchPattern <- "(B02|B03|B04|B08)_10m.jp2$"
+ten_bands <- list.files(paste0(pathL2A, "/GRANULE/"), pattern = searchPattern, full.names = TRUE, recursive = TRUE)
+
+l2a10 <- stack(ten_bands)
+
+l2a10
+
+names(l2a10) = c("blue", "green", "red", "nir")
+
+
+```
+
+
+
+
+## Data preparation 2
+
+* Get the administrative borders of Germany with the `raster::getData()` function. Make sure you download the minor administrative boarders with the argument `level = 4`.
+* Subset the downloaded administrative borders to the "Landkreis Lahntal". **Hint:** you have to search for "Lahntal" in the column "NAME_4" of the attribute table of the polygons.
+* Print the projections of both the raster stack and the border of Lahntal. Which step do you suggest next?
+
+```{r}
+borders = raster::getData("GADM", country = "DEU", level = 4, path = "data/raw")
+lahntal = borders[borders$NAME_4 == "Lahntal",]
+plot(lahntal)
+
+projection(lahntal)
+projection(l2a10)
+
+# Suggest reprojection
+
+lahntal = spTransform(lahntal, projection(l2a10))
+
+```
+
+
+
+
+
+## Data preparation 3
+
+* Buffer the polygon of Lahntal by 4 km. You find a buffer function in the `rgeos` package.
+* Crop the sentinel stack with the buffered polygon.
+* To see if everything worked fine, plot the first layer of your stack.
+* Save the cropped stack as a tif.
+
+```{r}
+lahntal_buf = rgeos::gBuffer(lahntal, width = 4000)
+
+lahntal_sen = crop(l2a10, lahntal_buf)
+plot(lahntal_sen[[1]])
+
+writeRaster(lahntal_sen, "data/lahntal_sentinel.tif")
+
+```
+
+
+
+## Have a look
+
+* Plot a True Color Composite.
+* Plot a False Color Composite.
+
+```{r}
+# True Color
+plotRGB(lahntal_sen, r = 3, g = 2, b = 1, stretch = "lin")
+
+# False Color
+plotRGB(lahntal_sen, r = 4, g = 3, b = 2, stretch = "lin")
+```
+
+
+
+
