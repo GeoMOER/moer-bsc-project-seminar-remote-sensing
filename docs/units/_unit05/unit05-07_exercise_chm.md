@@ -31,10 +31,11 @@ The Sentinel Grid topography will now be the basis for the calculation of the me
 
 * Load the first layer of the cropped Lahntal Sentinel-2 scene.
 * Crop the layer with the extent of the Lidar Pointcloud.
-* Calculate a DEM with the Sentinel tile as a grid template.
-* Normalize the Pointcloud with `lasnormalize`. What happened?
-* Calculate the mean vegetation height for each 10 x 10 m pixel.
+* Calculate a DEM with the Sentinel tile as a grid template with `grid_metrics()`.
+* Normalize the Pointcloud with `lasnormalize()`. What happened?
+* Calculate the mean vegetation height for each pixel.
 * Save the mean vegetation height as a tif.
+* Plot the mean vegetation height as overlay to the Lahntal sentinel scene.
 
 
 
