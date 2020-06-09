@@ -1,4 +1,5 @@
 ## summary of the last sessions
+setwd("~/casestudies/course_sen_lidar/")
 
 library(raster)
 library(lidR)
@@ -10,7 +11,8 @@ sen = stack("data/sentinel/lahntal_sentinel.tif")
 names(sen) <- c("B2", "B3", "B4", "B8")
 sen$NDVI <- (sen$B8 - sen$B4) / (sen$B8 + sen$B4)
 
-
+writeRaster(sen, filename = "data/sentinel/lahntal_sentinel_NDVI.tif")
+plot(sen)
 # Lidar derived MVH
 mvh = raster("data/lidar/mvh.tif")
 
@@ -28,6 +30,12 @@ dset <- as.data.frame(dset)
 # one row of the df was one cell of the raster, the columns were the different layers of the stack
 colnames(dset)
 head(dset)
+
+plot(dset)
+
+caret::featurePlot(dset, dset$mvh, plot = "scatter")
+
+hist(dset$mvh)
 
 
 # remove na values
