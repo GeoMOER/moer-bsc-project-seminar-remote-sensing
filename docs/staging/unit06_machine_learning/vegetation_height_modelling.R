@@ -5,14 +5,15 @@ library(raster)
 library(lidR)
 library(ranger)
 library(caret)
+library(tree)
 
 sen = stack("data/sentinel/lahntal_sentinel.tif")
 
 names(sen) <- c("B2", "B3", "B4", "B8")
 sen$NDVI <- (sen$B8 - sen$B4) / (sen$B8 + sen$B4)
 
-writeRaster(sen, filename = "data/sentinel/lahntal_sentinel_NDVI.tif")
-plot(sen)
+# writeRaster(sen, filename = "data/sentinel/lahntal_sentinel_NDVI.tif")
+# plot(sen)
 # Lidar derived MVH
 mvh = raster("data/lidar/mvh.tif")
 
@@ -23,7 +24,9 @@ mvh = raster("data/lidar/mvh.tif")
 
 
 
+
 # combine mhv with the sentinel bands and convert to a data frame
+
 dset <- stack(crop(sen, mvh), mvh)
 dset <- as.data.frame(dset)
 
@@ -48,6 +51,28 @@ train_id <- caret::createDataPartition(dset$mvh, times = 1, p = 0.6, list = FALS
 
 train_df <- dset[train_id,]
 test_df <- dset[-train_id,]
+
+
+## Decision Tree
+
+tmodel = tree(mvh ~ ., data = train_df)
+plot(tmpdel); text(tmodel)
+summary(tmodel)
+
+## Random Forest
+
+rf_model = ranger::ranger(mvh ~ ., data = train_df, num.trees = 200, mtry = 3, importance = "impurity")
+rf_model$variable.importance
+
+
+
+
+p = stats::predict(object = rf_model, train_df)
+plot(train_df$mvh, p$predictions)
+
+
+# Hyperparameter tuning
+
 
 # define tuning parameters for ranger
 tgrid <- expand.grid(.mtry = 2:4,
