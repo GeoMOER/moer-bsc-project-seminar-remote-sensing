@@ -7,13 +7,9 @@ library(ranger)
 library(caret)
 library(tree)
 
-sen = stack("data/sentinel/lahntal_sentinel.tif")
+sen = stack("data/sentinel/lahntal_sentinel_NDVI.tif")
+names(sen) <- c("B2", "B3", "B4", "B8", "NDVI")
 
-names(sen) <- c("B2", "B3", "B4", "B8")
-sen$NDVI <- (sen$B8 - sen$B4) / (sen$B8 + sen$B4)
-
-# writeRaster(sen, filename = "data/sentinel/lahntal_sentinel_NDVI.tif")
-# plot(sen)
 # Lidar derived MVH
 mvh = raster("data/lidar/mvh.tif")
 
@@ -21,9 +17,6 @@ mvh = raster("data/lidar/mvh.tif")
 # Terminolgy: 
 ## sentinel bands are the predictors
 ## mean vegetation height is the response
-
-
-
 
 # combine mhv with the sentinel bands and convert to a data frame
 
@@ -33,11 +26,9 @@ dset <- as.data.frame(dset)
 # one row of the df was one cell of the raster, the columns were the different layers of the stack
 colnames(dset)
 head(dset)
-
 plot(dset)
 
 caret::featurePlot(dset, dset$mvh, plot = "scatter")
-
 hist(dset$mvh)
 
 
