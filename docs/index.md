@@ -79,7 +79,8 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 | 09 | Built-in hold||
 | 10 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
 | 11 | Advanced Modelling II  	    | Predictions, outlook |
-| 12 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| 12 | Built-in hold||
+| 13 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
