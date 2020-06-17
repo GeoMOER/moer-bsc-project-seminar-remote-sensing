@@ -179,7 +179,7 @@ defaults:
       path: ""
       type: unit07
     values:
-      category: "07 Outline"
+      category: "07 Projects"
       tags: "Unit 07"
       layout: single
       sidebar:
