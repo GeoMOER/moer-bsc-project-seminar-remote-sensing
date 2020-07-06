@@ -5,7 +5,7 @@ title: 'Example: Putting it all together'
 
 ## Predictors and Observations
 
-```
+```yaml
 
 library(raster)
 library(ranger)
@@ -73,7 +73,7 @@ rfmodel <- caret::train(mvh ~ ., data = train_df, method = "ranger",
 ## Validation
 
 
-```
+```yaml
 # visual validation
 
 # predict on Sentinel
