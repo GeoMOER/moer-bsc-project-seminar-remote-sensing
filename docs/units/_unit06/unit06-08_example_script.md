@@ -56,7 +56,7 @@ test_df <- dset_clean[-train_id,]
 
 ## Random Forest modelling
 
-```
+```yaml
 # define tuning parameters for ranger
 tgrid <- expand.grid(.mtry = 1:5,
                      .splitrule = "variance",
@@ -95,7 +95,7 @@ sqrt(mean((test_df$pred - test_df$mvh)^2, na.rm = TRUE))
 ## Export results
 
 
-```
+```yaml
 # save resulting mean vegetation height
 writeRaster(p, "output/vegetation_height_prediction.tif")
 
