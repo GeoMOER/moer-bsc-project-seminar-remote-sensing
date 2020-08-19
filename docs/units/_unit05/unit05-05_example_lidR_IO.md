@@ -3,8 +3,8 @@ title: "Example: LidR I/O and clipping"
 ---
 
 
-Since Lidar data can have quit large file sizes and need some processing power,
-we only take a look at a small sample area. This was created with the script below.
+Since LiDAR data can have quit large file sizes and need some processing power,
+we only take a look at a small example area. This area was created with the script below.
 It only uses simple Input / Output commands as well as `lidR::lasclip` which is the aquivalent to `raster::crop`.
 
 

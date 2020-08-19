@@ -15,7 +15,7 @@ As a start, load in your prepared Sentinel stack from Lahntal from the previous 
 * Calculate the NDVI for the Lahntal stack.
 * Plot the NDVI.
 * Add the NDVI as a new layer to the existing Lahntal stack.
-* Save the modified stack as a tif.
+* Save the modified stack as a tif file.
 
 ## Water bodies
 

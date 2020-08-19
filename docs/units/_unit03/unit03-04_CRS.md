@@ -39,7 +39,7 @@ A projected CRS is based on calculated 2-dimensional Cartesian coordinates, whic
 
 
 ### CRSs and projections in R
-CRSs and projections can be defined in R by an [epsg](https://spatialreference.org/ref/epsg/){:target="_blank"} code or by a [proj4string](https://proj.org/usage/projections.html){:target="_blank"} character string.
+CRSs and projections can be defined in R by an [epsg](https://spatialreference.org/ref/epsg/){:target="_blank"} code or by a [proj4string](https://proj.org/usage/projections.html){:target="_blank"} character string. Note that proj4 is depricated and the transition to the new proj6, proj7 or WKT standards currently causes a lot of trouble.
 
 
 

@@ -3,7 +3,10 @@ title: 'Example: Putting it all together'
 ---
 
 
-## Predictors and Observations
+## Predictors and observations
+
+Example workflow:
+
 
 ```yaml
 

@@ -11,7 +11,7 @@ title: "Learning by Doing: Sentinel-2 Preparation"
 
 ## Data preparation 1
 
-* Create a raster stack of the four bands which have 10 m resolution. Which bands are these and what colors do they represent?
+* Create a raster stack of the four bands with 10 m resolution. Which bands are these and what colors do they represent?
 * Print out the names of these bands.
 * Change the names according to the represented color.
 
@@ -35,7 +35,7 @@ If you plot your polygon it should look like this:
 * Buffer the polygon of Lahntal by 4 km. You find a buffer function in the `rgeos` package.
 * Crop the sentinel stack with the buffered polygon.
 * To see if everything worked fine, plot the first layer of your stack.
-* Save the cropped stack as a tif.
+* Save the cropped stack as a tif file.
 
 
 ## Have a look

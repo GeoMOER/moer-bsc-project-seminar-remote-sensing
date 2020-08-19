@@ -2,8 +2,8 @@
 title: "A word about classifications" 
 ---
 
-In this course, we focused on and made use of a regression model. We used Random Forest to predict a continuous variable (the mean vegetation height) and also used a continuous error metric, the root mean squared error.  
-If we not have a continuous variable to predict (e.g. forest types or more broadly the landcover) we speak of classification models.
+In this course, we focused on and made use of regression models. We used Random Forest to predict a continuous variable (the mean vegetation height) and also used a continuous error metric, the root mean squared error.
+If we do not have a continuous variable to predict (e.g. forest types or more broadly the landcover) we speak of classification models.
 No worries! Apart from some minor tweaks, the workflow is exactly the same as with regression models (we even can use the same model type).
 
 
@@ -48,7 +48,7 @@ projection(lc)
 projection(sen) = projection(lc)
 ```
 
-# Create data frame
+## Create data frame
 
 (see: The Modelling workflow)
 
@@ -109,7 +109,7 @@ saveRDS(rfmodel, "../data/classification/lcc_ranger.RDS")
 ```
 
 
-# Visuals
+## Visuals
 
 ```yaml
 library(ggplot2)

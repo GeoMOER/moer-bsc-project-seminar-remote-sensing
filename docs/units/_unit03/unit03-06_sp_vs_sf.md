@@ -2,7 +2,7 @@
 title: "FAQ: sp vs. sf"
 ---
 
-### Which system should i learn?
+### Which R package should I learn to use?
 Short answer: currently both!
 
 Long answer: [here](https://www.r-bloggers.com/should-i-learn-sf-or-sp-for-spatial-r-programming/)

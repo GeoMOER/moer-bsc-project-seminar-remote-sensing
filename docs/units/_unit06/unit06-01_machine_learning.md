@@ -10,17 +10,17 @@ Learn the fundamentals of machine learning and build a random forest model.
 ## Learning objectives
 At the end of this unit you should be able to
 
-* prepare your data for machine learning.
-* understand basic concepts in machine learning.
-* train a random forest model.
-* make predictions with the model.
-* tune your model.
+* understand the basic concepts in machine learning,
+* prepare your data for machine learning,
+* train a random forest model,
+* make predictions with the model,
+* tune your model, and
 * validate your model.
 
 
-## Machine Learning Kick off
+## Machine learning kick off
 
-To get an overview about the large field that is machine learning, you can watch these videos or do some internet research on your own. There are some great tutorials out there.
+To get an overview about the large field called "machine learning", you can watch the videos below or do some internet research on your own. There are some great tutorials out there.
 
 1. [A Gentle Introduction to Machine Learning (12:44)](https://www.youtube.com/watch?v=Gv9_4yMHFhI&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF){:target="_blank"}  
 2. [Decision Trees (17:21)](https://www.youtube.com/watch?v=7VeUPuFGJHk){:target="_blank"}  

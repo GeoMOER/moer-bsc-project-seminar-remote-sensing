@@ -11,7 +11,7 @@ Instead of RStudio one could of course use any kind of text editor but we recomm
 Some starting points for R:
   * To get started with R, [download it from r-project.org](https://www.r-project.org/){:target="_blank"}.
   * To get help for a function, use "?" (e.g. "`?print` for function `print()`).
-  * To see what one can do with R, become a regular fellow of the [R-bloggers](https://www.r-bloggers.com/){:target="_blank"} page.
+  * To see what one can do with R, become a regular follower of the [R-bloggers](https://www.r-bloggers.com/){:target="_blank"} page.
   * To find solutions for problems, search the web and look out especially for results hosted at [stackoverflow](https://stackoverflow.com){:target="_blank"}.
   
 Aside from that, the examples provided within this unit are also a good place to start.

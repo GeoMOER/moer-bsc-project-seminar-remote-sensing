@@ -2,28 +2,27 @@
 title: "Projects"
 ---
 
-Apply your gained knowledge in your own project work.
+Apply your gained skills in your own work project.
 
 <!--more-->
 
-You now have all the tools available your own machine learning project work.
-There are several posibilities on what your can work on:
+You now have all the knowledge and tools available for your own machine learning work project.
+There are several posibilities to move on, e.g.:
 
 
-## Improving the predictions
+## Improve the predictions
 
 The random forest models and predictions of the mean vegetation height in Unit 6 were not that great.
 You could now focus on improving the model by using additional predictors, more training data or multi-temporal satellite imagery.
 
 
+## Compare model types
 
-## Comparison of model types
-
-You could compare random forest with other model types like support vector machines or a neural network.
+You could compare random forest models with other model types like support vector machines or a neural networks.
 
 
-## Different response variable
+## Use different response variables
 
-During the course we used the mean vegetation height as an example. Of course you can try to model a different Lidar derived index.
+During the course we used the mean vegetation height as an example. Of course you can try to model a different LiDAR-derived index.
 
 
