@@ -63,24 +63,24 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 
 # Session overview
 
-| Session | Topic | Content |
+| Session | Date | Topic | Content |
 |---------|-------|---------|
-|| **R Basics** ||
-| 01 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
-| 02 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
-| 03 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
-|| **Iteration I: Start simple** ||
-| 04 | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
-| 05 | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
-| 06 | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
-| 07 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
-|| **Iteration II: Reality** ||
-| 08 | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
-| 09 | Built-in hold||
-| 10 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
-| 11 | Advanced Modelling II  	    | Predictions, outlook |
-| 12 | Built-in hold||
-| 13 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| **R Basics** ||||
+| 01 | 16.04.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
+| 02 | Date | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
+| 03 | Date | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
+| **Iteration I: Start simple** ||||
+| 04 | Date | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 05 | Date | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
+| 06 | Date | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
+| 07 | Date | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+| **Iteration II: Reality** ||||
+| 08 | Date | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
+| 09 | Date | Built-in hold||
+| 10 | Date | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
+| 11 | Date | Advanced Modelling II  	    | Predictions, outlook |
+| 12 | Date | Built-in hold||
+| 13 | Date | **Wrap up**         |         | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
