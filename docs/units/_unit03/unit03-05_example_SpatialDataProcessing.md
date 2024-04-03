@@ -11,20 +11,22 @@ This example provides a schematic workflow for processing vector and raster data
 
 ## Get raster data
 
-Firstly, we import some raster data into our working environment
-Therefore, we need to load a package to handle raster data in R, preferable `raster`.
-If the package is not available, we need to install it first with `install.packages("raster")`.
+Firstly, we import some raster data into our working environment.
+Therefore, we need packages to download and process raster data in R, preferablly `geodata` and `terra` respectively.
+If the package is not available, we need to install it first with `install.packages("geodata")`.
+The `geodata` package installation includes `terra` package and you don't need to do a separate installation.
 
 
 ```r
-library("raster")
+library("terra")
+library("geodata")
 ```
 
-We now can use the function `getData()` to download some raster data: In this example a global map of precipitation values at 10 minutes spatial resolution.
+We now can use the function `worldclim_global` from the `geodata` package to download some raster data: In this example a global map of precipitation values at 10 minutes spatial resolution.
 
 
 ```r
-prec <- getData("worldclim", var="prec", res=10)
+prec <- worldclim_global(var="prec", res=10,path=getwd())
 ``` 
 
 
@@ -32,22 +34,23 @@ Fortunately, the downloaded data already have a correct CRS:
 
 
 ```r
-## class      : RasterStack 
-## dimensions : 900, 2160, 1944000, 12  (nrow, ncol, ncell, nlayers)
-## resolution : 0.1666667, 0.1666667  (x, y)
-## extent     : -180, 180, -60, 90  (xmin, xmax, ymin, ymax)
-## crs        : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 
-## names      : prec1, prec2, prec3, prec4, prec5, prec6, prec7, prec8, prec9, prec10, prec11, prec12 
-## min values :     0,     0,     0,     0,     0,     0,     0,     0,     0,      0,      0,      0 
-## max values :   885,   736,   719,   820,   955,  1850,  2088,  1386,   904,    980,    893,    914 
+## class       : SpatRaster 
+## dimensions  : 1080, 2160, 12  (nrow, ncol, nlyr)
+## resolution  : 0.1666667, 0.1666667  (x, y)
+## extent      : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## sources     : wc2.1_10m_prec_01.tif,wc2.1_10m_prec_02.tif,wc2.1_10m_prec_03.tif ... and 9 more source(s)   
+## names       : wc2.1~ec_01, wc2.1~ec_02, wc2.1~ec_03, wc2.1~ec_04, wc2.1~ec_05, wc2.1~ec_06, ... 
+## min values  :           0,           0,           0,           0,           0,           0, ... 
+## max values  :         908,         793,         720,        1004,        2068,        2210, ... 
 ``` 
 
 
 ... and can be quickly and simply visualized with `plot()`. 
-Note that the object type is a `RasterStack` with 12 layers, one for each month of the year.
+Note that the object type is a `SpatRaster` with 12 layers, one for each month of the year.
 
 ```r
-plot(prec$prec1)
+plot(prec$wc2.1_10m_prec_01)
 ```
 
 
@@ -61,23 +64,24 @@ Secondly, we add some vector data to our working environment. For example the ad
 
 
 ```r
-fra <- getData('GADM', country='FRA', level=0)
+fra <- geodata::gadm('GADM', country='FRA', level=0)
 ```
 
-Fortunately, also these downloaded data already have a CRS, defined by a _proj4 string_:
+Fortunately, also these downloaded data already have a defined CRS:
 
 ```r
-## class       : SpatialPolygonsDataFrame 
-## features    : 1 
+## class       : SpatVector 
+## geometry    : polygons 
+## dimensions  : 1, 2  (geometries, attributes)
 ## extent      : -5.143751, 9.560416, 41.33375, 51.0894  (xmin, xmax, ymin, ymax)
-## crs         : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 
-## variables   : 2
-## names       : GID_0, NAME_0 
-## value       :   FRA, France 
+## coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+## names       : GID_0 COUNTRY
+## type        : <chr>   <chr>
+## values      :   FRA  France
 ```
 
-Note that the object type here is a `SpatialPolygonsDataFrame` (defined in package `sp`) with one _feature_ (i.e. with a single polygon), 
-a certain _extent_ (which can also be extracted with `extent(fra)`), a _CRS_ (which also be extracted with `CRS(fra)`), and two _variables_ with some _values_ (in this case country abbreviation and name).
+Note that the object type here is a `SpatVector` (defined in package `terra`) with one _feature_ (i.e. with a single polygon), 
+a certain _extent_ (which can also be extracted with `ext(fra)`), a _CRS_ (which also be extracted with `crs(fra)`), and two _variables_ with some _values_ (in this case country abbreviation and name).
 
 
 Also vector data can quickly and simply be visualized with `plot()`
@@ -101,13 +105,13 @@ Note that `crop()` processes all layers in the input raster stack.
 
 
 ```r
-cropped_prec <- crop(prec, extent(fra))
+cropped_prec <- crop(prec, ext(fra))
 ```
 
-For function arguments see `?crop()`. Now we have precipitation maps of France:
+For function arguments see `?crop`. Now we have precipitation maps of France:
 
 ```r
-plot(cropped_prec$prec1)
+plot(cropped_prec$wc2.1_10m_prec_01)
 ```
 
 
@@ -126,8 +130,7 @@ clipped_prec <- mask(cropped_prec, fra)
 ```
 
 
-The result is a `RasterBrick` object with 12 layers, one for each month of the year (the difference to a `RasterStack` as obove is only how memory is allocated, what does not matter here). 
-
+The result is a `SpatRaster` object with 12 layers displayed by the boundary extent of France.
 
 Again, the result can quickly and simply be visualized with `plot()`
 
@@ -141,7 +144,7 @@ plot(clipped_prec$prec1)
 
 ## Raster operations
 
-The created RasterBrick now contains precipitation values of France on a _monthly_ basis. 
+The created SpatRaster now contains precipitation values of France on a _monthly_ basis. 
 What if we want to have a single precipitation layer with _annual_ precipitation values?
 We would need to sum up the values of all 12 precipitation layers for each pixel location.
 This can be done by:
@@ -150,10 +153,10 @@ This can be done by:
 clipped_prec_sum <- sum(clipped_prec)
 ```
 
-An alternative would be to use `stackApply()` (see `?stackApply()` for details. Note the `na.rm` argument). 
+An alternative would be to use `app()` (see `?app` from `terra` package for details. Note the `na.rm` argument). 
 
 ```r
-clipped_prec_sum_2 <- raster::stackApply(clipped_prec, rep(1,12), sum, na.rm=FALSE)
+clipped_prec_sum_2 <- terra::app(clipped_prec, sum, na.rm=FALSE)
 ```
 
 The resulting raster map looks like this: 
@@ -179,7 +182,7 @@ plot(fra, add=T)
 points(2.349014, 48.864716, pch=8, cex=2) # roughly the location of Paris
 ```
 
-<img src="{{ site.baseurl }}/assets/images/maps/FirstSimpleMap.jpg" style="display: block; margin: auto;" />
+<img src="{{ site.baseurl }}/assets/images/maps/FirstSimpleMap.png" style="display: block; margin: auto;" />
 
 
 
@@ -201,20 +204,20 @@ dev.off()
 
 
 Note that this is a raster image without geographic information.
-If you want to write out the spatial objects with geographic information, use e.g. `raster::writeRaster()` or `raster::shapefile()`. 
+If you want to write out the spatial objects with geographic information, use e.g. `terra::writeRaster()`. 
 
 
 
 
 ## Other important functions
 
-* Reading in raster data from file: `raster::raster()`
+* Reading in raster data from file: `terra::rast()`
 * Reading in vector data from file: `rgdal::readOGR()`
 
 
 ## More information
 
-For more details see [www.rspatial.org](https://www.rspatial.org/raster/spatial/index.html){:target="_blank"} and 
+For more details see [www.rspatial.org](https://rspatial.org/spatial/index.html){:target="_blank"} and 
 [Geocomputation with R](https://geocompr.robinlovelace.net/spatial-operations.html#spatial-vec){:target="_blank"}
 
 

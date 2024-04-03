@@ -2,7 +2,7 @@
 title: "Remote sensing: Linking LiDAR and satellite data with machine learning"
 authors:
   - zeuss
-  - ludwig
+  - temesgen
 layout: splash
 date: '2019-10-15 13:00:00 +0100'
 header:
@@ -46,9 +46,8 @@ At the end of this course you should be able to
 
 # Course features
 
-Given the actual COVID-19 situation, this course is intended as a blended learning module in our study program and will be conducted online-only upon further notice.  
-The instructors will set up a digital meeting room for the official duration of the course on a weekly basis (Wednesdays, 10:15 - 14:00, **starting 22.4.2020**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following Wednesday.  
-Further there will we a forum and chat group to discuss organizational matters and questions. We expect to resume presence teaching sometime during the semester. Participants will be informed by email as soon as possible when the situation changes.
+This course runs on a weekly basis (Tuesdays, 09:00 - 12:00, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following Tuesday.  
+Further there will we a forum and chat group to discuss organizational matters and questions.
 
 Organizational matters and further details will be discussed during our first digital kick-off session, 
 for which all participants (those who joined the course via [MARVIN](https://marvin.uni-marburg.de){:target="_blank"}) will be invited by email.
@@ -67,20 +66,20 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 |---------|-------|---------|
 | **R Basics** ||||
 | 01 | 16.04.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
-| 02 | Date | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
-| 03 | Date | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
+| 02 | 23.04.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
+| 03 | 30.04.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
 | **Iteration I: Start simple** ||||
-| 04 | Date | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
-| 05 | Date | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
-| 06 | Date | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
-| 07 | Date | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+| 04 | 07.05.2024 | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 05 | 14.05.2024 | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
+| 06 | 21.05.2024 | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
+| 07 | 04.06.2024 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
 | **Iteration II: Reality** ||||
-| 08 | Date | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
-| 09 | Date | Built-in hold||
-| 10 | Date | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
-| 11 | Date | Advanced Modelling II  	    | Predictions, outlook |
-| 12 | Date | Built-in hold||
-| 13 | Date | **Wrap up**         |         | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| 08 | 11.06.2024 | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
+| 09 | 18.06.2024 | Built-in hold||
+| 10 | 25.06.2024 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
+| 11 | 02.07.2024 | Advanced Modelling II  	    | Predictions, outlook |
+| 12 | 09.07.2024 | Built-in hold||
+| 13 | 16.07.2024 | **Wrap up**         |         | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
