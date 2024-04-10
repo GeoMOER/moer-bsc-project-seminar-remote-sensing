@@ -2,6 +2,9 @@
 title: "Example: R Markdown with html output"
 toc: true
 toc_label: In this example
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik){:target="_blank"}'
 ---
 
 This page shows how a compiled R markdown file looks like (in fact, all code examples in this course were compiled with R markdown).
@@ -32,9 +35,9 @@ summary(cars)
 
 ## This is another header
 
-You can also embed images, for example:
+You can also embed plots, for example:
 
-![]({{ site.baseurl }}/assets/images/logo_umr.png)<!-- -->
+![]({{ site.baseurl }}/assets/images/rmd_images/rmd_html_out/unnamed-chunk-2-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot (see below).
 
@@ -71,10 +74,18 @@ summary(cars)
 
 ## This is another header
 
-You can also embed images, for example:
+You can also embed plots, for example:
 
-![]({{ site.baseurl }}/assets/images/logo_umr.png)<!-- -->
+![]({{ site.baseurl }}/assets/images/rmd_images/rmd_html_out/unnamed-chunk-2-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot (see below).
 
 ``````
+
+## More fancy layouts?
+
+If you want more styling options for your markdown documents, 
+check out [this page](https://geomoer.github.io/moer-base-r/unit99/sl03_css.html){:target="_blank"}.
+
+
+

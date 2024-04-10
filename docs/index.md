@@ -79,7 +79,7 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 | 10 | 25.06.2024 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
 | 11 | 02.07.2024 | Advanced Modelling II  	    | Predictions, outlook |
 | 12 | 09.07.2024 | Built-in hold||
-| 13 | 16.07.2024 | **Wrap up**         |         | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| 13 | 16.07.2024 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
@@ -98,13 +98,19 @@ Basic knowledge of R and of handling spatial data is beneficial, but not require
 <!-- <br />  -->
 
 
-# Instructors
+Also check our additional material for teaching basic R skills, 
+which can be found [here](https://geomoer.github.io/moer-base-r/){:target="_blank"}.
+{: .notice--success}
 
-{% for i in page.authors %} 
-  {% assign author = site.data.authors[i] %}
+
+
+
+## Team
+
+{% for author in site.data.authors %}
   {% include author-profile.html %}
+ <br />
 {% endfor %}
-
 
 
 

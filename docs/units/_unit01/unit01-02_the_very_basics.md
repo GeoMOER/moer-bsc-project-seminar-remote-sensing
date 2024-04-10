@@ -1,0 +1,14 @@
+---
+title: R and RStudio
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik){:target="_blank"}'
+---
+
+Start to learn the essentials for working with R and RStudio.
+<!--more-->
+
+## First steps in R and RStudio
+
+The online resources for this unit can be found [here](https://geomoer.github.io/moer-base-r/unit01/unit01-01_Intro.html){:target="_blank"}.
+

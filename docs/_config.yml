@@ -27,7 +27,7 @@ baseurl: "/moer-bsc-project-seminar-remote-sensing/"
 
 
 ##### Title ###################################################################
-title: Lab of Environmental Informatics
+title: Remote Sensing
 name: &name "Lab of Environmental Informatics" # &name is a YAML anchor which can be *referenced later
 email: dirk.zeuss@uni-marburg.de
 description: >- # this means to ignore newlines until next item
@@ -35,8 +35,8 @@ description: >- # this means to ignore newlines until next item
   physical-geography environmental-science nature-conservation r SDM
 
 ##### Social Sharing ##########################################################
-twitter:
-  username         : &twitter "EnvIn_UMR"
+#twitter:
+#  username         : &twitter "EnvIn_UMR"
 
 ##### Lecturer settings #######################################################
 # moved to /_data/authors.yml
@@ -45,6 +45,8 @@ twitter:
 ##### Site configuration ######################################################
 title_separator: "|"
 excerpt_separator: <!--more-->
+locale                   : "en-EN"
+repository               : "GeoMOER"
 
 # Build settings
 markdown: kramdown
@@ -65,6 +67,9 @@ collections:
   examples:
     output: true
     permalink: /:collection/:title.html
+  unit00:
+    output: true
+    permalink: /:collection/:title.html  
   unit01:
     output: true
     permalink: /:collection/:title.html
@@ -114,6 +119,16 @@ defaults:
       layout: single
       sidebar:
         nav: "units" 
+  # unit00
+  - scope:
+      path: ""
+      type: unit00
+    values:
+      category: "How to this course"
+      tags: "Unit 00"
+      layout: single
+      sidebar:
+        nav: "units"
   # unit01
   - scope:
       path: ""
@@ -243,6 +258,9 @@ plugins:
   - jemoji
   - jekyll-include-cache
   - jekyll-algolia
+
+# Handling Reading
+encoding: UTF-8
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
