@@ -10,7 +10,7 @@ No worries! Apart from some minor tweaks, the workflow is exactly the same as wi
 
 ```yaml
 
-library(raster)
+library(terra)
 library(sf)
 library(caret)
 library(ranger)
@@ -19,7 +19,7 @@ library(ranger)
 setwd("~/casestudies/course_sen_lidar/")
 
 # sentinel are the predictors again
-sen = stack("../data/sentinel/lahntal_sentinel_NDVI.tif")
+sen = rast("../data/sentinel/lahntal_sentinel_NDVI.tif")
 names(sen) <- c("blue", "green", "red", "nir", "ndvi")
 
 
