@@ -274,7 +274,7 @@ encoding: UTF-8
 #   - vendor/gems/
 #   - vendor/ruby/
 
-# github: [metadata]
+github: [metadata]
 
 
 

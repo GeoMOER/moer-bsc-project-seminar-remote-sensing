@@ -1,5 +1,9 @@
 ---
 title: "The Light Spectrum or why does Remote Sensing work?"
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 --- 
 
 For an understanding of why multispectral remote sensing works, it is a good idea to recap some physics (mainly optics)

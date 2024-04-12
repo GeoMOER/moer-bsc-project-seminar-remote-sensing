@@ -1,8 +1,9 @@
 ---
 title: First Things First
+toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
-  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik){:target="_blank"}'
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 Go through a brute force introduction into R, R Markdown, the RStudio IDE, version management with Git and GitHub's classroom functionality to get ready for solving the upcoming assignment problems and submitting your solutions.

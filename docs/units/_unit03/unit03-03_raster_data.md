@@ -1,5 +1,9 @@
 ---
 title: "Raster Data"
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 Raster data consists of cells or pixels in a seamless grid system and usually contain only one value per cell or pixel.

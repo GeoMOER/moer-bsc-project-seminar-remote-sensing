@@ -1,5 +1,9 @@
 ---
 title: "A word about classifications" 
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 In this course, we focused on and made use of regression models. We used Random Forest to predict a continuous variable (the mean vegetation height) and also used a continuous error metric, the root mean squared error.

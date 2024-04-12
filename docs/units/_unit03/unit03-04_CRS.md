@@ -1,5 +1,9 @@
 ---
 title: "Coordinate Reference Systems"
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 An integral part of all spatial data is the coordinate reference system (CRS), which is used to define meaningful distances between data points irrespective of their values.

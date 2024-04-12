@@ -1,7 +1,9 @@
 ---
 title: "Example: Visual Data Exploration"
 toc: true
-toc_label: In this example
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 Visual data exploration should be one of the first steps in data analysis. In fact, it should start right after reading a data set. The following examples are based on a data set showing the quality and prices of diamonds [More info](https://ggplot2.tidyverse.org/reference/diamonds.html)

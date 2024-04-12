@@ -3,7 +3,7 @@ title: Digital learning
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
-  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/de/fb19/disciplines/physisch/umweltinformatik/umweltinformatik){:target="_blank"}'
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 This course is intended as a blended learning module, although the provided introductions, explanations and examples might be useful for self-study, too.

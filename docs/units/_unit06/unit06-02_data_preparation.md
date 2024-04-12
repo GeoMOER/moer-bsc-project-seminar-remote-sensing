@@ -1,5 +1,9 @@
 ---
 title: "Exersice: Data preparation"
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 --- 
 
 In this exersice you prepare your mean vegetation height data from LiDAR and the Sentinel bands.

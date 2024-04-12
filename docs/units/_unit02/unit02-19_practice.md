@@ -1,5 +1,9 @@
 ---
 title: Practice your statistics
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 --- 
 
 Do the following tasks on your own. Write down questions or difficulties you encountered which we can discuss afterwards.

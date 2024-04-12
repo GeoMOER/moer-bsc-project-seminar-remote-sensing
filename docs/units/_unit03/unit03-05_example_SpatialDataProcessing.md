@@ -1,7 +1,9 @@
 ---
 title: 'Example: Workflow in R'
-toc: yes
-toc_label: In this example
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 This example provides a schematic workflow for processing vector and raster data in R. 

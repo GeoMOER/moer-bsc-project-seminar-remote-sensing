@@ -46,7 +46,7 @@ At the end of this course you should be able to
 
 # Course features
 
-This course runs on a weekly basis (Tuesdays, 09:00 - 12:00, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following Tuesday.  
+This course runs on a weekly basis (Tuesdays, 09:15 - 11:45, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following Tuesday.  
 Further there will we a forum and chat group to discuss organizational matters and questions.
 
 Organizational matters and further details will be discussed during our first digital kick-off session, 

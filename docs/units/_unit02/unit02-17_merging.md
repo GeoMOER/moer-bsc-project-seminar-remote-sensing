@@ -1,7 +1,9 @@
 ---
 title: "Example: Merging"
 toc: true
-toc_label: In this example
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 

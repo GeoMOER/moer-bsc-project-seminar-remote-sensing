@@ -1,5 +1,9 @@
 ---
 title: Tabulated Data I/O
+toc: true
+header:
+  image: "/assets/images/title_RS_5-1.png"
+  caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
 Reading or writing tabulated data into or from a data frame is a quite common task in data analysis. You could use the read.table function for this.
