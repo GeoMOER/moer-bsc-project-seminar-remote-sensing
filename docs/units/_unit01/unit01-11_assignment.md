@@ -29,5 +29,5 @@ Please write an R script as an Rmd file with html output for the following task 
 1. Show just the entry of the cell in the second row and first column.
 
 Create an HTML file from your Rmd file by knitting it. Then upload both files to Ilias. 
-See here for where exactly to place your files as well as for the file naming conventions.
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
 {: .notice--info}

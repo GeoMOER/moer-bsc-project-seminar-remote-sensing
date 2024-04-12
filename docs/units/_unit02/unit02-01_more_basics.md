@@ -25,4 +25,8 @@ At the end of this unit you should be able to
 * build your first linear model,
 * feel comfortable with the usage of R.
 
+## Comments?
+You can leave comments below if you have questions or remarks about any of the text or code in this unit. 
+Please copy the corresponding line into your comment to make it easier to answer your question.
 
+<script src="https://utteranc.es/client.js" repo="GeoMOER/moer-bsc-project-seminar-remote-sensing" issue-term="moer-bsc-project-seminar-remote-sensing_unit02" theme="github-light" crossorigin="anonymous" async> </script> 

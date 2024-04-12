@@ -22,4 +22,8 @@ Note that you have to log in with your student account.
 Your primary learning environment is this public homepage, which was created on GitHub.
 Here you find all learning materials, assignments and help.
 
+## Comments?
+You can leave comments below if you have questions or remarks about any of the text or code in this unit. 
+Please copy the corresponding line into your comment to make it easier to answer your question.
 
+<script src="https://utteranc.es/client.js" repo="GeoMOER/moer-bsc-project-seminar-remote-sensing" issue-term="moer-bsc-project-seminar-remote-sensing_unit00" theme="github-light" crossorigin="anonymous" async> </script> 

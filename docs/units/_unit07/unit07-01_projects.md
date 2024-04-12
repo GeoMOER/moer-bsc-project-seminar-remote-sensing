@@ -30,3 +30,8 @@ You could compare random forest models with other model types like support vecto
 During the course we used the mean vegetation height as an example. Of course you can try to model a different LiDAR-derived index.
 
 
+## Comments?
+You can leave comments below if you have questions or remarks about any of the text or code in this unit. 
+Please copy the corresponding line into your comment to make it easier to answer your question.
+
+<script src="https://utteranc.es/client.js" repo="GeoMOER/moer-bsc-project-seminar-remote-sensing" issue-term="moer-bsc-project-seminar-remote-sensing_unit07" theme="github-light" crossorigin="anonymous" async> </script> 

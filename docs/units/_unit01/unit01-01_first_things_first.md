@@ -14,8 +14,7 @@ Go through a brute force introduction into R, R Markdown, the RStudio IDE, versi
 At the end of this unit you should be able to
 * tell the difference between an R and an R markdown script,
 * create an R and R markdown script and run and compile it respectively,
-* sign in to the class assignment of this course at GitHub and clone and push your course repository between the GitHub server and your local computer,
-* put an R markdown (or any other) file into your Git repository, commit it locally and push it to the server.
+
 
 ## Why data analysis, why R
 
@@ -28,4 +27,4 @@ Examples from a very large and fast growing cosmos: [R-bloggers](https://www.r-b
 You can leave comments below if you have questions or remarks about any of the text or code in this unit. 
 Please copy the corresponding line into your comment to make it easier to answer your question.
 
-<script src="https://utteranc.es/client.js" repo="GeoMOER/moer-mpg-data-analysis" issue-term="moer-mpg-data-analysis_unit01" theme="github-light" crossorigin="anonymous" async> </script> 
+<script src="https://utteranc.es/client.js" repo="GeoMOER/moer-bsc-project-seminar-remote-sensing" issue-term="moer-bsc-project-seminar-remote-sensing_unit01" theme="github-light" crossorigin="anonymous" async> </script> 

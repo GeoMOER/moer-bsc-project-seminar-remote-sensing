@@ -46,11 +46,11 @@ At the end of this course you should be able to
 
 # Course features
 
-This course runs on a weekly basis (Tuesdays, 09:15 - 11:45, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. You can do the exercises at your own pace and we will discuss them on the following Tuesday.  
-Further there will we a forum and chat group to discuss organizational matters and questions.
+This course runs on a weekly basis (Tuesdays, 09:15 - 11:45, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. 
+The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. 
+You can do the exercises at your own pace and we will discuss them in the subsequent session. 
 
-Organizational matters and further details will be discussed during our first digital kick-off session, 
-for which all participants (those who joined the course via [MARVIN](https://marvin.uni-marburg.de){:target="_blank"}) will be invited by email.
+Organizational matters and further details can be found [here]({{"unit00/unit00-01_Digital_learning.html" | baseURL }}){:target="_blank"} and will be discussed during our first kick-off session.
 
 
 
@@ -69,15 +69,15 @@ for which all participants (those who joined the course via [MARVIN](https://mar
 | 02 | 23.04.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
 | 03 | 30.04.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
 | **Iteration I: Start simple** ||||
-| 04 | 07.05.2024 | Remote Sensing Theory                    | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
-| 05 | 14.05.2024 | Remote Sensing in R		                | Satellite data processing, simple lidar parameters, data management|
-| 06 | 21.05.2024 | Modelling Theory             | Machine Learning Basics, Random Forest, Validation  |
+| 04 | 07.05.2024 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 05 | 14.05.2024 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
+| 06 | 21.05.2024 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
 | 07 | 04.06.2024 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
 | **Iteration II: Reality** ||||
-| 08 | 11.06.2024 | Advanced Remote Sensing in R    		  | Spectral Indices, spatial indices, spatial operations, resampling, merging|
+| 08 | 11.06.2024 | Advanced Remote Sensing in R | Spectral Indices, spatial indices, spatial operations, resampling, merging|
 | 09 | 18.06.2024 | Built-in hold||
-| 10 | 25.06.2024 | Advanced Modelling I    		| Sampling strategies, caret, cross validation|
-| 11 | 02.07.2024 | Advanced Modelling II  	    | Predictions, outlook |
+| 10 | 25.06.2024 | Advanced Modelling I         | Sampling strategies, caret, cross validation|
+| 11 | 02.07.2024 | Advanced Modelling II  	     | Predictions, outlook |
 | 12 | 09.07.2024 | Built-in hold||
 | 13 | 16.07.2024 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
