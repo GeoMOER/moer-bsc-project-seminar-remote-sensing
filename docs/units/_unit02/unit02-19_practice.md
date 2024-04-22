@@ -1,5 +1,5 @@
 ---
-title: Assignment: Practice your statistics
+title: Practice your statistics(Assignment)
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
