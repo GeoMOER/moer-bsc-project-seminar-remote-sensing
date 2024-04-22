@@ -16,8 +16,8 @@ the csv file.
 
 
 ```r
-df <- read.table("data/diamonds.csv"),
-                 skip = 4, header = TRUE, sep = ";", dec = ",")
+df <- read.table("data/diamonds.csv",
+                 skip = 4, header = TRUE, sep = ",", dec = ".")
 ```
 
 As you can see, the `read.table` function gets several arguments (which is common for many functions). The first one gives the filename inclducing the path to the file. 
@@ -27,8 +27,8 @@ As you can see, the `read.table` function gets several arguments (which is commo
 * `dec = "."` defines the decimal separator used in the dataset
 
 A note on the sequence of the arguments: the sequence of the arguments does
-not matter as long as you name them explicetly. If you do not use the argument
-identfier as it is the case for the first argument, the filename, in the example 
+not matter as long as you name them explicitly. If you do not use the argument
+identifier as it is the case for the first argument, the filename, in the example 
 then the sequence matters. To get information on the default sequence and of 
 course the general application of the each R function, type `?<function name>`
 (e.g. `?read.table`) in an R console.
@@ -37,7 +37,7 @@ After you executing the `read.table` function above, the content of the csv file
 stored into a two dimensional data frame called `df` in the example above. 
 
 A quick way to check if everything is fine is to display the first few lines of
-the data file using the `head` function (without the 2, it will print 5 lines as a standard setting).
+the data file using the `head` function (without the 2, it will print 6 lines as a standard setting).
 
 ```r
 head(df,2)

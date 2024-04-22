@@ -1,5 +1,5 @@
 ---
-title: Practice your statistics
+title: Assignment: Practice your statistics
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
@@ -61,6 +61,12 @@ Look at the scatterplot again. Imagine we want to estimate the petal width of fl
 1. Create a linear model with the petal width as a function of the petal length. (`lm(formula = ..., data = ...)`) You have to use the `~` again in the formula.
 1. Create the scatterplot with the petal length on the x-axis and the petal width on the y-axis again.
 1. Add the visual representation of the linear model to the plot (`abline`).
+
+## Uploading assignment to Ilias
+Create an HTML file from your Rmd file by knitting it. Then upload both files to Ilias. 
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
+{: .notice--info}
+
 
 
 

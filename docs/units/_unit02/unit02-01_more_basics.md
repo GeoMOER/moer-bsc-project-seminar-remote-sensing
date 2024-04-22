@@ -22,7 +22,6 @@ At the end of this unit you should be able to
 * use R's basic plot functionality to quickly visualize your data,
 * identify some common problems in the structure of data frames,
 * subset, merge, separate a data frame in order to clean it,
-* build your first linear model,
 * feel comfortable with the usage of R.
 
 ## Comments?
