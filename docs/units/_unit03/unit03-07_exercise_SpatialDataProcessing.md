@@ -1,5 +1,5 @@
 ---
-title: "Exercise: Spatial Data Processing"
+title: "Assignment: Spatial Data Processing"
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
@@ -22,17 +22,16 @@ Create a map of Germany with the following features:
 - a raster background map showing elevation data,
 - a vector map showing the country boundary,
 - use the vector map to clip the raster map,
-- map point locations denoting the places of birth of all course participants 
+- map point locations denoting your places of birth  
 (use a `SpatialPointsDataFrame` object with the correct CRS for this task),
 - map the three largest German cities and Marburg with different symbols, and
 - get bonus points by adding a legend, rivers, and other cartographic elements as well as
-- the distances of the places of birth to Marburg.
 
 
-
-
-Save your R functions and Rmd file in your project structure, knitr it and upload the html file to Ilias.
-
+## Uploading assignment to Ilias
+Create an HTML file from your Rmd file by knitting it. Then upload both files to Ilias. 
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
+{: .notice--info}
 
 
 
