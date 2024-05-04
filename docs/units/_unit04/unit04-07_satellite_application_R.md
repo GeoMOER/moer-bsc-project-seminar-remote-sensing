@@ -26,8 +26,10 @@ As a start, load in your prepared Sentinel stack from Lahntal from the previous 
 * Divide your NDVI layer into two groups: water and everything else. You can use the `terra::classify` function.
 * Now it is just a matter of counting pixels to find out the area of water bodies.
 
-## Assignment
-Write everything in a Rmd file, knitr it and upload the html file to Ilias.
+## Uploading assignment to Ilias
+Finalize the two assignments (i.e., Learning by Doing: Sentinel-2 Preparation and Sentinel-2 Application) and create an HTML file from your Rmd file by knitting it. Then upload both files (i.e., Rmd and html) to Ilias. 
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
+{: .notice--info}
 
 
 
