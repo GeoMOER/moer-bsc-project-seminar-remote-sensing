@@ -45,4 +45,4 @@ The Sentinel Program consists of six missions from which four already launched i
 There are multiple places on the internet to download Sentinel-2 data.
 For starters we suggest using the [ESA Open Sentinel Hub](https://scihub.copernicus.eu/dhus/#/home){:target="_blank"}.
 Here you can select a region, time and what level of data you want and simply download the whole tile. 
-Once you are a bit more experienced, also try the R package [sen2R](https://github.com/ranghetti/sen2r){:target="_blank"}.
+
