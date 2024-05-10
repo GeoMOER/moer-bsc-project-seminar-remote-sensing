@@ -24,10 +24,9 @@ It may be advisable to create a subdirectory in your data folder for all the upc
 
 ##### Attribute Filter
 
-* Filter the LiDAR data. Only keep points above an intensity value of 300
+* Filter the LiDAR data. Only keep points below an intensity value of 300
 * Plot them. What points are these? What could you do with those points?
-* Filter the LiDAR data. Only keep points which belong to the classification "2"
-* Plot them. What points are these? What could you do with those points?
+
 
 
 

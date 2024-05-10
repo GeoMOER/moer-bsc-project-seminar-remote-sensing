@@ -14,23 +14,28 @@ It only uses simple Input / Output commands as well as `lidR::lasclip` which is 
 
 ```yaml
 library(lidR)
-
+library(terra)
 library(sp)
-library(rgdal)
 
 
 # load in sample area. 
-a = readOGR("data/lidarArea.gpkg")
+a = vect(".../data/lahntalgpkg.sec")
 
 
-# full lidar set (needs around 12 GB in RAM)
-mof = readLAS("data/raw/mof_lidar_2018.las")
+# This is a smaller lidar coverage. Full lidar set (needs around 12 GB in RAM)
+mof = readLAS("/data/mof_lidar_2018_pd5.las")
 
-# Check if the crs for study area "a" and lidar data "mof" are the same. If not, project "a" to the lidar "mof" crs. 
+# Check if the crs for study area "a" and lidar data "mof" are the same. 
+# If not, project "a" to the lidar "mof" crs using `project` function from `terra` package. 
 
-SpatVector
-# crop out the sample area
-sub_mof = clip_roi(mof, a)
+# Project the crs
+b= terra::project(a,"EPSG:25832")
+# Note the sample are "b" is a `SpatialVector` object but `clip_roi` from the `lidR` package requires a data.frame-like simple feature `sp` object. 
+# Use the `st_as_sf` function from the `sp`package to convert "b" from `SpatialVector` to `sp` object.
+c=sf::st_as_sf(b)
+
+# crop out the sample area using `clip_roi` from the `lidR` package
+sub_mof = clip_roi(mof, c)
 
 # it still takes 921 mb RAM
 
@@ -39,8 +44,8 @@ sub_mof = clip_roi(mof, a)
 rm(mof) # removes a object from R
 gc() # "garbage collector" -> cleans up the RAM
 
-
-writeLAS(sub_mof, "/data/lidar/lidar_2018_clipped.las")
+# save the clipped lidar data to your local drive
+writeLAS(sub_mof, ".../data/lidar_2018_clipped.las")
 
 ```
 

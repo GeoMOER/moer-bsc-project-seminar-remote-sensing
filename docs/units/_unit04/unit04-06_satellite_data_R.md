@@ -9,13 +9,13 @@ header:
 
 ## Data acquisition and first steps
 
-* Download the Sentinel-2 scene for Marburg from 23rd March 2020. Make sure you get the L2A dataset.
+* Download the Sentinel-2 scene for Marburg city that covers "lahntal" region (e.g. use one of the two images in Feburary 2023 or use from another year or month). Make sure you get the L2A dataset.
 * Create a new R project or use your existing one for the course and save the downloaded zipfile in your raw data folder.
 
 
 ## Data preparation 1
 
-* Create a raster stack of the four bands with 10 m resolution. Which bands are these and what colors do they represent?
+* Create a raster stack of the four bands with 10 m resolution (in this course use only `terra` package to create raster stacks). Which bands are these and what colors do they represent?
 * Print out the names of these bands.
 * Change the names according to the represented color.
 
@@ -44,6 +44,6 @@ If you plot your polygon it should look like this:
 
 ## Have a look
 
-* Plot a True Color Composite.
+* Plot a True Color Composite (Hint: use `plotRGB`  from the `terra`package)
 * Plot a False Color Composite.
 
