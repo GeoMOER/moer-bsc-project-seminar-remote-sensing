@@ -44,6 +44,10 @@ Tasks:
 * Save the mean vegetation height as a tif file
 * Plot the mean vegetation height as overlay to the Lahntal sentinel scene
 
+## Uploading assignment to Ilias
+Finalize the three assignments (i.e., answering the questions under the reading assignment, and the two exercises under Introduction to LidR and LiDAR products) and create an HTML file from your Rmd file by knitting it. Then upload both files (i.e., Rmd and html) to Ilias. 
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
+{: .notice--info}
 
 
 
