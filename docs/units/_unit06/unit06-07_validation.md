@@ -1,5 +1,5 @@
 ---
-title: "Exercise: Validation"
+title: "Exercise 5: Validation"
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"

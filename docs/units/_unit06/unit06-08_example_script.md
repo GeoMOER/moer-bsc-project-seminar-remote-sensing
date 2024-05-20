@@ -36,7 +36,11 @@ mvh = rast("data/lidar/mvh.tif")
 
 # combine mhv with the sentinel bands and convert to a data frame
 
-cset <- c(crop(sen, mvh), mvh)
+# first make sure that the "mvh" and "sen" have same coordinate system and matches in spatial extent
+
+# if not, check "terra::project", "terra::crop" and "terra::resample" functions from the "terra" package to accomplish these
+
+cset <- c(sen, mvh)
 plot(cset)
 
 dset <- as.data.frame(cset)
@@ -72,7 +76,7 @@ tgrid <- expand.grid(.mtry = 1:5,
 # train the model
 rfmodel <- caret::train(mvh ~ ., data = train_df, method = "ranger",
                         tuneGrid = tgrid, trControl = trainControl(method = "cv"),
-                        num.trees = 200)
+                        num.trees = 50)
 
 ```
 
