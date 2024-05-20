@@ -1,5 +1,5 @@
 ---
-title: "Exercise 2: Data visualisation"
+title: "Exercise2: Data visualisation"
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"

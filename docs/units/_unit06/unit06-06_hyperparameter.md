@@ -1,5 +1,5 @@
 ---
-title: "Exercise 4: Hyperparameter tuning"
+title: "Exercise4: Hyperparameter tuning"
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"

@@ -1,5 +1,5 @@
 ---
-title: "Exercise 3: My first model"
+title: "Exercise3: My first model"
 toc: true
 header:
   image: "/assets/images/title_RS_5-1.png"
