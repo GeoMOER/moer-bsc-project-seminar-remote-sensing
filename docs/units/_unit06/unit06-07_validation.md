@@ -26,6 +26,11 @@ One of the most used error metrics to assess the quality of a model is the `Root
 * Implement the formula for the RMSE in R and calculate it for your predictions of the test data. How can you interpret this value?
 * Divide the RMSE by the mean of the observed vegetation height in the test data. How can you interpret this value?
 
+## Uploading assignment to Ilias
+Finalize the three Exercises (Exercise 3, 4, and 5), read the example script provided in the html, and create a nice map of the vegetation height that you predicted. Then upload both files (i.e., Rmd and html) to Ilias. 
+See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
+{: .notice--info}
+
 
 
 

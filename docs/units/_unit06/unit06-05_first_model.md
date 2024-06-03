@@ -27,8 +27,7 @@ Now we train many more trees: a random forest.
 * Create a scatterplot with the actual mean vegetation height on the x-axis and the predicted mean vegetation height on the y-axis.
 
 
-## Assignment
-Write everything in a Rmd file, knitr it and upload the html file to Ilias.
+
 
 
 
