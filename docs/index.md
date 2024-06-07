@@ -76,8 +76,8 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 | **Iteration II: Reality** ||||
 | 08 | 11.06.2024 | Advanced Remote Sensing in R | Spectral Indices, spatial indices, spatial operations, resampling, merging|
 | 09 | 18.06.2024 | Built-in hold||
-| 10 | 25.06.2024 | Advanced Modelling I         | Sampling strategies, caret, cross validation|
-| 11 | 02.07.2024 | Advanced Modelling II  	     | Predictions, outlook |
+| 10 | 25.06.2024 | Advanced Modelling           | Predictions, outlook|
+| 11 | 02.07.2024 | Built-in hold||  	     
 | 12 | 09.07.2024 | Built-in hold||
 | 13 | 16.07.2024 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 

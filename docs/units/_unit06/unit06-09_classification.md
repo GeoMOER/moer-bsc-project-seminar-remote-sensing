@@ -15,41 +15,31 @@ No worries! Apart from some minor tweaks, the workflow is exactly the same as wi
 ```yaml
 
 library(terra)
-library(sf)
 library(caret)
 library(ranger)
+library(RStoolbox)
 
+# Land cover classification using random forest model
+setwd(".../data/")
 
-setwd("~/casestudies/course_sen_lidar/")
-
-# sentinel are the predictors again
-sen = rast("../data/sentinel/lahntal_sentinel_NDVI.tif")
+# Again use the predictors from the Sentinel. Use the "lahntal_sentinel_NDVI.tif" data from ILIAS
+sen = rast("lahntal_sentinel_NDVI.tif")
+# Assign name
 names(sen) <- c("blue", "green", "red", "nir", "ndvi")
 
 
-# training polygons
-lc = st_read("../data/classification/trainingsgebiete.gpkg")
+# Download the training data "classification_data.gpkg" from ILIAS
+lc = terra::vect(".../Data/classification_data.gpkg")
 
-plot(lc["Klasse"])
-plotRGB(sen, stretch = "lin"); plot(lc["Klasse"], add = TRUE)
-```
+# Check the coordinate reference information (crs) and match the crs
+terra::crs(lc)
+terra::crs(sen)
 
-## Data cleanup
-
-
-```yaml
-# remove underrepresented classes
-
-table(lc$Klasse)
-lc = lc[!(lc$Klasse %in% c("Baum", "kuenstliche flaechen")),]
-table(lc$Klasse)
-
-# proj4 != proj6 problematic
-
-projection(sen)
-projection(lc)
-
-projection(sen) = projection(lc)
+crs(sen) = "EPSG:25832"
+crs(sen)
+# Plot sen and lc 
+plotRGB(sen, stretch = "lin")
+plot(lc["Class"], add=T, col="red")
 ```
 
 ## Create data frame
@@ -58,18 +48,19 @@ projection(sen) = projection(lc)
 
 
 ```yaml
-# get pixel values underneath the polygons
+# Extract pixel values for each points
 
-val <- extract(sen, lc, df = TRUE)
+val <- terra::extract(sen, lc, df = TRUE)
 
-# create a look-up-table with polygon ID and its class
-poly_class <- data.frame(ID = seq(465), Klasse = lc$Klasse)
-
+# create a look-up-table with point ID and its class
+point_class <- data.frame(ID = val$ID, Class = lc$Class)
+# Class=1 is Builtup, Class=2 is forest, and Class=3 is cropland
 # add the class information to the pixel values
-val <- join(val, poly_class, by = "ID")
+
+val$Class <- point_class$Class
 
 # save
-saveRDS(val, file = "data/training_set.RDS")
+saveRDS(val, file = ".../Data/training_set.RDS")
 ```
 
 
@@ -79,19 +70,25 @@ saveRDS(val, file = "data/training_set.RDS")
 
 ```yaml
 
-df = readRDS("../data/classification/training_set.RDS")
+#  read the training_set.RDS
+df = readRDS("..../Data/training_set.RDS")
 head(df)
-df$Klasse = droplevels(df$Klasse)
-# this is the exact same as with the regression model
-
-
-head(df)
-
-# delete the polygon ID (for now!)
+# delete the point ID (for now!)
 df$ID = NULL
-
+# convert the "Class" data type from integer to factor
+str(df)
+df$Class = factor(df$Class)
+str(df)
+# Remove NA values from the dataframe
+df=na.omit(df)
+# Build the classification model
 set.seed(1)
 train_id <- caret::createDataPartition(y = df$Klasse, times = 1, p = 0.6, list = FALSE)
+train_df <- df[train_id,]
+test_df <- df[-train_id,]
+
+
+train_id <- caret::createDataPartition(y = df$Class, times = 1, p = 0.6, list = FALSE)
 train_df <- df[train_id,]
 test_df <- df[-train_id,]
 
@@ -105,35 +102,34 @@ tgrid <- expand.grid(.mtry = 1:5,
                      .min.node.size = c(5,10,15,20))
 
 # train the model
-rfmodel <- caret::train(Klasse ~ ., data = train_df, method = "ranger",
+rfmodel <- caret::train(Class ~ ., data = train_df, method = "ranger",
                         tuneGrid = tgrid, trControl = trainControl(method = "cv"),
-                        num.trees = 200)
+                        num.trees = 100)
+rfmodel
+# Save the model
+saveRDS(rfmodel, "D:/Data/lcc_ranger.RDS")
 
-saveRDS(rfmodel, "../data/classification/lcc_ranger.RDS")
 ```
 
 
 ## Visuals
 
 ```yaml
-library(ggplot2)
 
-rfmodel = readRDS("../data/classification/lcc_ranger.RDS")
+# Run the land cover classification using the Sentinel raster predictors
+rfmodel = readRDS("D:/Data/lcc_ranger.RDS")
 rfmodel
 
-p = raster::predict(object = sen, rfmodel)
-
+p = raster::predict(object = sen, rfmodel, na.rm=T)
 plot(p)
-p@data@attributes[[1]]
+p
 
+# Improve the visualization of the land cover classification map
 RStoolbox::ggR(p, geom_raster = TRUE)+
-  scale_fill_manual(name = "Classes", values = c("grey", "gold1", "yellow3", "red", "lightgreen", "darkgreen", "blue"))+
+  scale_fill_manual(name = "class", values = c("red",  "darkgreen", "yellow"), labels=c("Builtup","Forest","Cropland"))+
   theme(axis.text.y = element_text(angle = 90, hjust = 0.5),
         axis.title = element_blank(), legend.position = "bottom", panel.background = element_blank(),
         panel.grid = element_line(color = "grey50"))
-  
-
-
 
 
 ```
@@ -144,15 +140,15 @@ RStoolbox::ggR(p, geom_raster = TRUE)+
 
 test_df$Pred <- stats::predict(object = rfmodel, test_df)
 
-# contingency table
-ct = table(test_df$Klasse, test_df$Pred)
+# contingency table or error matrix
+ct = table(test_df$Class, test_df$Pred)
 ct
 
 # accuracy
 # sum of all correct classifications / n
 
-table(test_df$Klasse == test_df$Pred)
-sum(test_df$Klasse == test_df$Pred) / nrow(test_df)
+table(test_df$Class == test_df$Pred)
+sum(test_df$Class == test_df$Pred) / nrow(test_df)
 
 
 # kappa value
@@ -162,7 +158,6 @@ sum(test_df$Klasse == test_df$Pred) / nrow(test_df)
 # kappa of 1: agreement
 
 kappa(ct)
-
 
 ```
 
