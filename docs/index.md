@@ -46,7 +46,7 @@ At the end of this course you should be able to
 
 # Course features
 
-This course runs on a weekly basis (Tuesdays, 09:15 - 11:45, **starting 16.04.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. 
+This course runs on a weekly basis (Mondays, 14:15 - 15:45, **starting 21.10.2024**). Course units will consist of one topic (see table below), different ways of their practical application in R and an exercise for applying your new skills. 
 The topics will be presented as online readers, screencasts, videos or collections of blog posts and examples of other researchers. 
 You can do the exercises at your own pace and we will discuss them in the subsequent session. 
 
@@ -66,20 +66,21 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 |---------|-------|---------|
 | **R Basics** ||||
 | 01 | 21.10.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
-| 02 | 23.04.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
-| 03 | 30.04.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
+| 02 | 28.10.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
+| 03 | 04.11.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
 | **Iteration I: Start simple** ||||
-| 04 | 07.05.2024 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
-| 05 | 14.05.2024 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
-| 06 | 21.05.2024 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
-| 07 | 04.06.2024 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+| 04 | 11.11.2024 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 05 | 18.11.2024 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
+| 06 | 25.11.2024 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
+| 07 | 02.12.2024 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
 | **Iteration II: Reality** ||||
-| 08 | 11.06.2024 | Advanced Modelling           |Predictions, outlook|
-| 09 | 18.06.2024 | Built-in hold||
-| 10 | 25.06.2024 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
-| 11 | 02.07.2024 | Built-in hold||  	     
-| 12 | 09.07.2024 | Built-in hold||
-| 13 | 16.07.2024 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| 08 | 09.12.2024 | Advanced Modelling           |Predictions, outlook|
+| 09 | 16.12.2024 | Built-in hold||
+| 10 | 13.01.2025 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
+| 11 | 20.01.2025 | Built-in hold||  	     
+| 12 | 27.01.2025 | Built-in hold||
+| 12 | 03.02.2025 | Built-in hold||
+| 13 | 10.02.2025 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables
