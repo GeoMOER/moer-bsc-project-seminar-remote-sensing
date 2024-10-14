@@ -65,7 +65,7 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 | Session | Date | Topic | Content |
 |---------|-------|---------|
 | **R Basics** ||||
-| 01 | 16.04.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
+| 01 | 21.10.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
 | 02 | 23.04.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
 | 03 | 30.04.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
 | **Iteration I: Start simple** ||||
