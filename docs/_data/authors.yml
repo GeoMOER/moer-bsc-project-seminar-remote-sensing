@@ -1,9 +1,9 @@
 # /_data/authors.yml
 
 
-- abera:
+- moradi:
   name             : "Ayoub Moradi"
-  avatar           : "/assets/images/authors/Ayoub.jpg"
+  avatar           : "/assets/images/authors/ayoub.jpg"
   email            : "moradiay@geo.uni-marburg.de"
   bio              : "Philipps-Universität Marburg"
   location         : "Marburg, DE"

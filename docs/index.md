@@ -1,8 +1,8 @@
 ---
 title: "Remote sensing: Linking LiDAR and satellite data with machine learning"
 authors:
+  - moradi
   - zeuss
-  - temesgen
 layout: splash
 date: '2019-10-15 13:00:00 +0100'
 header:
