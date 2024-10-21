@@ -22,6 +22,14 @@ Note that you have to log in with your student account.
 Your primary learning environment is this public homepage, which was created on GitHub.
 Here you find all learning materials, assignments and help.
 
+## Online meeting room
+
+This is a hybrid course and you can find the link to the online meeting room in the ILIAS course environment. 
+Note that you need to log in into ILIAS for joining the online room.
+You are free to decide wether you like to participate online or in presence.
+
+
+
 ## Comments?
 You can leave comments below if you have questions or remarks about any of the text or code in this unit. 
 Please copy the corresponding line into your comment to make it easier to answer your question.
