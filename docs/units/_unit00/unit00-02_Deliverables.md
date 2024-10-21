@@ -44,7 +44,7 @@ Upload your assignments to ILIAS at least 15 minutes before the start of the nex
 
 # Project work
 
-The deadline to deliver the project work is 6 August 2024, 23:00, but we can discuss this according to your needs.
+The deadline to deliver the project work is "to be determined" 2024, 23:00, but we can discuss this according to your needs.
 Details on the final project work will be added to the respective unit, [here]({{"../unit07/unit07-01_projects.html" | baseURL }}){:target="_blank"}.
 
 

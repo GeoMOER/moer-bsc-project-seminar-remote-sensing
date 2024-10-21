@@ -7,11 +7,10 @@ header:
 ---
 <!--more-->
 
-Tutorium starts this week and resumes every Friday.
-* Place:Lab, room A0019
-* Time: 14:00 to 16:00
-* Date: 3 May 2024 (Firday)
-* Student assistant: Konstantin
+Tutorium starts 25 October and resumes every Friday.
+* Place: Room 00A19 + online room (link see ILIAS)
+* Time:  16:00 to 18:00
+* Student assistant: Alex
 
 
 
