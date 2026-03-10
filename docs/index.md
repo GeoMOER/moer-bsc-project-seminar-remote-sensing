@@ -65,22 +65,22 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 | Session | Date | Topic | Content |
 |---------|-------|---------|
 | **R Basics** ||||
-| 01 | 21.10.2024 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
-| 02 | 28.10.2024 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
-| 03 | 04.11.2024 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
+| 01 | 17.04.2026 | The very basics              | Course introduction, expectations, organisational matters, data and information, R, R Studio |
+| 02 | 24.04.2026 | More basics                  | Working environment, data types, object types, operators, indexing, plotting, reading and writing |
+| 03 | 01.05.2026 | Holiday                      ||  	     
+| 04 | 08.05.2026 | Working with spatial data    | Raster data, vector data, coordinate reference systems, reading and writing spatial data, spatial operators, mapping |
 | **Iteration I: Start simple** ||||
-| 04 | 11.11.2024 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
-| 05 | 18.11.2024 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
-| 06 | 25.11.2024 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
-| 07 | 02.12.2024 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+| 05 | 15.05.2026 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
+| 06 | 22.05.2026 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
+| 07 | 29.05.2026 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
+| 08 | 05.06.2026 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
 | **Iteration II: Reality** ||||
-| 08 | 09.12.2024 | Advanced Modelling           |Predictions, outlook|
-| 09 | 16.12.2024 | Built-in hold||
-| 10 | 13.01.2025 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
-| 11 | 20.01.2025 | Built-in hold||  	     
-| 12 | 27.01.2025 | Built-in hold||
-| 12 | 03.02.2025 | Built-in hold||
-| 13 | 10.02.2025 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
+| 09 | 12.06.2026 | Advanced Modelling           |Predictions, outlook|
+| 10 | 19.06.2026 | Built-in hold||
+| 11 | 26.06.2026 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
+| 12 | 03.07.2026 | Project work||  	     
+| 13 | 10.07.2026 | Project work||
+| 14 | 17.07.2026 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
 
 
 # Deliverables

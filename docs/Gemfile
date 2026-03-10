@@ -49,5 +49,5 @@ gem "handler"
 
 gem "webrick"
 
-gem "sinatra", ">= 3", "< 4"
+#gem "sinatra", ">= 3", "< 4"
 
