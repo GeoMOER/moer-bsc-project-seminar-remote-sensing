@@ -9,7 +9,7 @@ header:
 
 The tutorium is an open opportunity to raise questions regarding the course, for which you could not find a solution elsewhere.
 
-* First tutorium: Friday 25 October 2024
+* First tutorium: Friday 17 April 2026
 * Time:  Weekly 16:00 to 18:00 (German time)
 * Place: Room 00A19 + online room (link see ILIAS)
 * Student assistant: Lisa 
