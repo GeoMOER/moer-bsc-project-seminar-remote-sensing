@@ -11,7 +11,7 @@ This worksheet introduces you to R, R scripts and R markdown. After completion y
 ## Things you need for this worksheet
   * [R](https://cran.r-project.org/){:target="_blank"} — the interpreter can be installed on any operation system.
   * [RStudio](https://www.rstudio.com/){:target="_blank"} — we recommend to use R Studio for (interactive) programming with R.
-  * [Git](https://git-scm.com/downloads){:target="_blank"} environment for your operating system. 
+  
 
 ## Hello R 
 Please write an R script as an Rmd file with html output for the following task:
