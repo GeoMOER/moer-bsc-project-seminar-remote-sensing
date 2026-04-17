@@ -6,15 +6,15 @@ header:
   caption: 'Photo: [**Lab of Environmental Informatics**](https://www.uni-marburg.de/en/fb19/disciplines/physisch/environmentalinformatics){:target="_blank"}'
 ---
 
-This worksheet introduces you to R, R scripts and R markdown. Your submission will be pushed to your class repository at GitHub. After completion you should have gained some experience in running R commands within scripts, R markdown for running code and documentation within one file and Git/GitHub.
+This worksheet introduces you to R, R scripts and R markdown. After completion you should have gained some experience in running R commands within scripts, R markdown for running code and documentation within one file.
 
 ## Things you need for this worksheet
   * [R](https://cran.r-project.org/){:target="_blank"} — the interpreter can be installed on any operation system.
   * [RStudio](https://www.rstudio.com/){:target="_blank"} — we recommend to use R Studio for (interactive) programming with R.
-  * [Git](https://git-scm.com/downloads){:target="_blank"} environment for your operating system. For Windows users with little experience on the command line we recommend [GitHub Desktop](https://desktop.github.com/){:target="_blank"}.
+  * [Git](https://git-scm.com/downloads){:target="_blank"} environment for your operating system. 
 
-## Hello R and GitHub submission
-Please write an R script as an Rmd file with html output for the following task and commit it to your GitHub-based learning log:
+## Hello R 
+Please write an R script as an Rmd file with html output for the following task:
 
 1. Assign the value of five to a variable called `a` and the value of two to a variable called `b`.
 1. Compute the sum, difference, product and ratio of a and b (a always in the first place) and store the results to four different variables called `r1`, `r2`, `r3`, and `r4`.
@@ -28,6 +28,6 @@ Please write an R script as an Rmd file with html output for the following task 
 1. Show the entire content of `df`.
 1. Show just the entry of the cell in the second row and first column.
 
-Create an HTML file from your Rmd file by knitting it. Then upload both files to Ilias. 
+Create an HTML file from your Rmd file by knitting it. Then upload both files (".Rmd file" and ".html") to Ilias. 
 See [here]({{"../unit00/unit00-02_Deliverables.html#assignments" | baseURL }}){:target="_blank"} for where exactly to place your files as well as for the file naming conventions.
 {: .notice--info}
