@@ -10,4 +10,4 @@ header:
 (https://dataspace.copernicus.eu/) of the ESA.
 You can register there for free. You will need this account to download Sentinel 2 satellite images.
 
-1. Install the following R packages: sp, terra, rgdal, sf
+1. Install the following R packages: sp, terra, sf
