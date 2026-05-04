@@ -214,7 +214,7 @@ If you want to write out the spatial objects with geographic information, use e.
 ## Other important functions
 
 * Reading in raster data from file: `terra::rast()`
-* Reading in vector data from file: `rgdal::readOGR()`
+* Reading in vector data from file: `terra::vect()`
 
 
 ## More information
