@@ -22,8 +22,6 @@ Create a map of Germany with the following features:
 - a raster background map showing elevation data,
 - a vector map showing the country boundary,
 - use the vector map to clip the raster map,
-- map point locations denoting your places of birth  
-(use a `SpatialPointsDataFrame` object with the correct CRS for this task),
 - map the three largest German cities and Marburg with different symbols, and
 - get bonus points by adding a legend, rivers, and other cartographic elements as well as
 
