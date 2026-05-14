@@ -37,12 +37,12 @@ Therefore, in this course we can focus on actually using Sentinel-2 data in rese
 
 ## Where is Sentinel-1?
 
-The Sentinel Program consists of six missions from which four already launched in 2020. An overview of the program can be found [here](https://sentinel.esa.int/web/sentinel/missions){:target="_blank"}.
+The Sentinel Program consists of six missions from which four already launched in 2020. An overview of the program can be found [here](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/The_Sentinel_missions){:target="_blank"}.
 
 
 ## Data acquisition
 
 There are multiple places on the internet to download Sentinel-2 data.
-For starters we suggest using the [ESA Open Sentinel Hub](https://scihub.copernicus.eu/dhus/#/home){:target="_blank"}.
+For starters we suggest using the [ESA Open Sentinel Hub](https://dataspace.copernicus.eu/#/home){:target="_blank"}.
 Here you can select a region, time and what level of data you want and simply download the whole tile. 
 
