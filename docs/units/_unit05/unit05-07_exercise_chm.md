@@ -26,6 +26,7 @@ Of course `lidR` provides the functions for these tasks. Have a look at `rasteri
 
 Tasks:
 * Calculate a DEM, DSM and CHM with a 1 m resolution
+* Plot the DEM, DSM and CHM
 * Save the CHM as a tif file
 
 

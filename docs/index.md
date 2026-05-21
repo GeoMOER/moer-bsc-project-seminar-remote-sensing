@@ -74,9 +74,9 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 | 05 | 15.05.2026 | Remote Sensing Theory        | Sensor types, spectral properties, satellites, data acquisition, temporal aspects  |
 | 06 | 22.05.2026 | Remote Sensing in R		     | Satellite data processing, simple lidar parameters, data management|
 | 07 | 29.05.2026 | Modelling Theory             | Machine learning basics, Random Forest, validation  |
-| 08 | 05.06.2026 | Modelling in R               | Preprocessing, classification trees, random forest, validation|
+| 08 | 05.06.2026 | Built-in hold||
 | **Iteration II: Reality** ||||
-| 09 | 12.06.2026 | Advanced Modelling           |Predictions, outlook|
+| 09 | 12.06.2026 | Advanced Modelling           |Preprocessing, classification trees, random forest, validation, Predictions, outlook|
 | 10 | 19.06.2026 | Built-in hold||
 | 11 | 26.06.2026 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
 | 12 | 03.07.2026 | Project work||  	     
