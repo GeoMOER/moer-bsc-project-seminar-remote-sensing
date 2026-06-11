@@ -77,8 +77,8 @@ Organizational matters and further details can be found [here]({{"unit00/unit00-
 | 08 | 05.06.2026 | Built-in hold||
 | **Iteration II: Reality** ||||
 | 09 | 12.06.2026 | Advanced Modelling           |Preprocessing, classification trees, random forest, validation, Predictions, outlook|
-| 10 | 19.06.2026 | Built-in hold||
-| 11 | 26.06.2026 | Advanced Remote Sensing in R |Spectral Indices, spatial operations, resampling, merging, and Project overview|
+| 10 | 19.06.2026 | Advanced Modelling           |Applying random forest for classification problem and Project overview|
+| 11 | 26.06.2026 | Project plan                 |Project plan evaluation and starting project work|
 | 12 | 03.07.2026 | Project work||  	     
 | 13 | 10.07.2026 | Project work||
 | 14 | 17.07.2026 | **Wrap up**                  | Get feedback from your peers and instructors, tell us how you self-assess your skills and happy holidays |
