@@ -34,6 +34,7 @@ Please organize yourselves in groups of up to four people.
 This has the advantage that you can split up different work packages, but has the disadvantage that you are also responsible for harmonizing the different parts into one seamless piece of work without redundancies.
 Each group submits **ONE** team project at the end. 
 Please note that we expect submissions of groups with greater size to be larger in the total amount of work compared to smaller groups project.
+If you want to do the project alone, of course, that is also possible.
 
 
 

@@ -14,8 +14,8 @@ Write your project outline. Therefore
 1. find your group members and get to know each other,
 2. choose a research question,
 3. strictly follow the points mentioned under "Content and structure" above,
-4. upload your project outline to ILIAS until **to be determined** 23:59 as one pdf file, and 
-5. present your outline in the session on **to be determined**.
+4. upload your project outline to ILIAS until Thursday( **25.06.2026**) 12:00pm as one pdf file, and 
+5. present your outline in the next session.
 
 Again put your outline in an ´Rmarkdown´ file and compile it to a PDF document for upload on ILIAS.
 

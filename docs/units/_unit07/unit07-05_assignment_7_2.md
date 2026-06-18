@@ -13,7 +13,7 @@ header:
 Bring it to an end. Therefore
 1. implement the feedback to your outline, 
 2. realize your team project, and
-3. upload your pdf until **to be determined** on ILIAS.
+3. upload your pdf until **17.07.2026** on ILIAS.
 
 
 
