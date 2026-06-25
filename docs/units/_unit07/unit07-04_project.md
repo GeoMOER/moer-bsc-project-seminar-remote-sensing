@@ -18,7 +18,7 @@ The final product of your research project will be a research article.
 
 ### Format
 
-* Create one pdf file.
+* Create one pdf file for your project report.
 * Follow the structure you already used for the project outline.
 * Do not exceed 5000 words (excluding references).
 * Make your format consistent, e.g. font size, line spacing, text in display items, references, citations,  etc. 
@@ -27,7 +27,8 @@ The final product of your research project will be a research article.
 * Include an abstract after the title, which mirrors the content and structure of your project (250 words maximum).
 * Do not include a timetable (only in the project outline).
 * Do a sound literature review and properly cite peer-reviewed articles. Roughly aim to include 20-50 references.
-* Add the code (rmd code) for reproducing *all* of your results as part of the supplementary material of your pdf and properly format it as you already did in the assignments.
+* Add the *rmd code and html* for reproducing *all* of your results and properly format it as you already did in the assignments.
+* Your submission hence should include 3 things: *pdf report + rmd code + html*
 
 
 
